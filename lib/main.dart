@@ -1,4 +1,6 @@
-import 'package:career_institute/Leads_Form.dart';
+// ignore_for_file: prefer_const_constructors
+
+import 'package:career_institute/Pages/Leads_Form.dart';
 import 'package:flutter/material.dart';
 
 void main() {
