@@ -34,6 +34,15 @@ class _LeadFormState extends State<LeadForm> {
   List<String> TMethodOptions = ['ONLINE', 'ON-CAMPUS'];
   String? currentTMethod;
 
+  List<String> Courses = [
+    'Course A',
+    'Course B',
+    'Course C',
+    'Course D',
+    'Course E',
+  ];
+  String? selectedCourse;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -464,6 +473,50 @@ class _LeadFormState extends State<LeadForm> {
                                   ],
                                 ),
                               ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: DropdownButton<String>(
+                                value: selectedCity,
+                                borderRadius: BorderRadius.circular(8),
+                                hint: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: '- COURSES INTERESTED -',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.black),
+                                    ),
+                                    TextSpan(
+                                      text: ' *',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.red),
+                                    ),
+                                  ]),
+                                ),
+                                items: Courses.map((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    selectedCourse = newValue;
+                                  });
+                                },
+                              ),
                             ),
                           ),
                         ],
