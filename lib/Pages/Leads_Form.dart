@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:career_institute/Modules/myDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -79,21 +80,36 @@ class _LeadFormState extends State<LeadForm> {
 
   double sliderValue = 0;
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.indigo.shade200,
+        key: _scaffoldKey,
+        drawer: myDrawer(),
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-            Colors.greenAccent,
+            Colors.blueGrey.shade900,
             Colors.blue.shade900,
-            Colors.blueGrey.shade900
+            Colors.greenAccent,
           ])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 280.0),
+                child: IconButton(
+                    onPressed: () {
+                      _scaffoldKey.currentState?.openDrawer();
+                    },
+                    icon: Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    )),
+              ),
               Center(
                 child: Container(
                   width: 300,
@@ -832,9 +848,11 @@ class _LeadFormState extends State<LeadForm> {
                                   height: 40,
                                   width: 120,
                                   decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
                                       borderRadius: BorderRadius.circular(8),
                                       gradient: LinearGradient(colors: [
-                                        Colors.greenAccent,
+                                        Colors.blueGrey.shade900,
+                                        Colors.blue.shade900,
                                         Colors.blue.shade900,
                                       ])),
                                   child: Center(
@@ -856,11 +874,11 @@ class _LeadFormState extends State<LeadForm> {
                                   height: 40,
                                   width: 120,
                                   decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey),
                                       borderRadius: BorderRadius.circular(8),
                                       gradient: LinearGradient(colors: [
                                         Colors.blue.shade900,
-                                        Colors.blue.shade900,
-                                        Colors.blueGrey.shade900,
+                                        Colors.greenAccent,
                                       ])),
                                   child: Center(
                                       child: Text(
