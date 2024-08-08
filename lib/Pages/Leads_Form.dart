@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class LeadForm extends StatefulWidget {
   const LeadForm({super.key});
@@ -10,6 +10,13 @@ class LeadForm extends StatefulWidget {
 }
 
 class _LeadFormState extends State<LeadForm> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneNoController = TextEditingController();
+  TextEditingController areaController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController remarksController = TextEditingController();
+
   List<String> City = [
     'City A',
     'City B',
@@ -43,6 +50,35 @@ class _LeadFormState extends State<LeadForm> {
   ];
   String? selectedCourse;
 
+  List<String> MarketingOptions = [
+    'Marketing Source A',
+    'Marketing Source B',
+    'Marketing Source C',
+    'Marketing Source D',
+    'Marketing Source E',
+  ];
+  String? selectedMSource;
+
+  List<String> OriginOptions = [
+    'Origin A',
+    'Origin B',
+    'Origin C',
+    'Origin D',
+    'Origin E',
+  ];
+  String? selectedOrigin;
+
+  List<String> PreferredCampus = [
+    'Campus A',
+    'Campus B',
+    'Campus C',
+    'Campus D',
+    'Campus E',
+  ];
+  String? selectedCampus;
+
+  double sliderValue = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,8 +86,11 @@ class _LeadFormState extends State<LeadForm> {
         backgroundColor: Colors.indigo.shade200,
         body: Container(
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Color(0xffB81736), Color(0xff281537)])),
+              gradient: LinearGradient(colors: [
+            Colors.greenAccent,
+            Colors.blue.shade900,
+            Colors.blueGrey.shade900
+          ])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -77,6 +116,9 @@ class _LeadFormState extends State<LeadForm> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          SizedBox(
+                            height: 10,
+                          ),
                           RichText(
                             text: TextSpan(children: [
                               TextSpan(
@@ -112,6 +154,7 @@ class _LeadFormState extends State<LeadForm> {
                           Container(
                             height: 55,
                             child: TextField(
+                              controller: nameController,
                               decoration: InputDecoration(
                                   label: RichText(
                                     text: TextSpan(children: [
@@ -143,6 +186,7 @@ class _LeadFormState extends State<LeadForm> {
                           Container(
                             height: 55,
                             child: TextField(
+                              controller: emailController,
                               decoration: InputDecoration(
                                   label: RichText(
                                     text: TextSpan(children: [
@@ -174,6 +218,7 @@ class _LeadFormState extends State<LeadForm> {
                           Container(
                             height: 55,
                             child: TextField(
+                              controller: phoneNoController,
                               decoration: InputDecoration(
                                   label: RichText(
                                     text: TextSpan(children: [
@@ -205,6 +250,7 @@ class _LeadFormState extends State<LeadForm> {
                           Container(
                             height: 55,
                             child: TextField(
+                              controller: areaController,
                               decoration: InputDecoration(
                                   label: RichText(
                                     text: TextSpan(children: [
@@ -456,7 +502,12 @@ class _LeadFormState extends State<LeadForm> {
                                             currentTMethod = value.toString();
                                           });
                                         }),
-                                    Text('ONLINE'),
+                                    Text(
+                                      'ONLINE',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                     SizedBox(
                                       width: 20,
                                     ),
@@ -469,7 +520,12 @@ class _LeadFormState extends State<LeadForm> {
                                             currentTMethod = value.toString();
                                           });
                                         }),
-                                    Text('ON-CAMPUS'),
+                                    Text(
+                                      'ON-CAMPUS',
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                    ),
                                   ],
                                 ),
                               ],
@@ -519,6 +575,308 @@ class _LeadFormState extends State<LeadForm> {
                               ),
                             ),
                           ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Center(
+                              child: DropdownButton<String>(
+                                value: selectedCity,
+                                borderRadius: BorderRadius.circular(8),
+                                hint: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: '- MARKETING SOURCE -',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.black),
+                                    ),
+                                    TextSpan(
+                                      text: ' *',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 12,
+                                          color: Colors.grey),
+                                    ),
+                                  ]),
+                                ),
+                                items: MarketingOptions.map((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    selectedMSource = newValue;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 95,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Center(
+                                  child: DropdownButton<String>(
+                                    value: selectedCity,
+                                    borderRadius: BorderRadius.circular(8),
+                                    hint: RichText(
+                                      text: TextSpan(children: [
+                                        TextSpan(
+                                          text: '- ORIGIN -',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12,
+                                              color: Colors.black),
+                                        ),
+                                        TextSpan(
+                                          text: ' *',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12,
+                                              color: Colors.grey),
+                                        ),
+                                      ]),
+                                    ),
+                                    items: OriginOptions.map((String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        selectedOrigin = newValue;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                width: 175,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Center(
+                                  child: DropdownButton<String>(
+                                    value: selectedCity,
+                                    borderRadius: BorderRadius.circular(8),
+                                    hint: RichText(
+                                      text: TextSpan(children: [
+                                        TextSpan(
+                                          text: '- PREFERRED CAMPUS -',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12,
+                                              color: Colors.black),
+                                        ),
+                                        TextSpan(
+                                          text: ' *',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12,
+                                              color: Colors.red),
+                                        ),
+                                      ]),
+                                    ),
+                                    items: PreferredCampus.map((String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        selectedCampus = newValue;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 55,
+                            child: TextField(
+                              controller: dateController,
+                              onTap: () {
+                                _selectDate();
+                              },
+                              readOnly: true,
+                              decoration: InputDecoration(
+                                  suffixIcon: Icon(Icons.calendar_today),
+                                  label: RichText(
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                        text: 'NEXT FOLLOW UP',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                            color: Colors.black),
+                                      ),
+                                      TextSpan(
+                                        text: ' *',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                            color: Colors.red),
+                                      ),
+                                    ]),
+                                  ),
+                                  hintText: "Select A Date...",
+                                  hintStyle: TextStyle(fontSize: 12),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8))),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          RichText(
+                            text: TextSpan(children: [
+                              TextSpan(
+                                text: 'PROBABILITY',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: Colors.black),
+                              ),
+                              TextSpan(
+                                text: ' *',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12,
+                                    color: Colors.red),
+                              ),
+                            ]),
+                          ),
+                          Slider(
+                              divisions: 10,
+                              min: 0,
+                              max: 100,
+                              label: sliderValue.toString(),
+                              thumbColor: Colors.red,
+                              value: sliderValue,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  sliderValue = newValue;
+                                });
+                              }),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            height: 100,
+                            child: TextField(
+                              style: TextStyle(fontSize: 12),
+                              textAlignVertical: TextAlignVertical.top,
+                              expands: true,
+                              maxLines: null,
+                              controller: remarksController,
+                              decoration: InputDecoration(
+                                  label: RichText(
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                        text: 'REMARKS',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                            color: Colors.black),
+                                      ),
+                                      TextSpan(
+                                        text: ' *',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                            color: Colors.red),
+                                      ),
+                                    ]),
+                                  ),
+                                  hintText: "Enter Remarks...",
+                                  hintStyle: TextStyle(fontSize: 12),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8))),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 40,
+                                  width: 120,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      gradient: LinearGradient(colors: [
+                                        Colors.greenAccent,
+                                        Colors.blue.shade900,
+                                      ])),
+                                  child: Center(
+                                      child: Text(
+                                    'SUBMIT',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
+                                  )),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 40,
+                                  width: 120,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      gradient: LinearGradient(colors: [
+                                        Colors.blue.shade900,
+                                        Colors.blue.shade900,
+                                        Colors.blueGrey.shade900,
+                                      ])),
+                                  child: Center(
+                                      child: Text(
+                                    'CANCEL',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14),
+                                  )),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 50,
+                          ),
                         ],
                       ),
                     ),
@@ -533,13 +891,41 @@ class _LeadFormState extends State<LeadForm> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      'Scroll Down',
-                      style: TextStyle(color: Colors.white54),
+                    Animate(
+                      effects: [
+                        FadeEffect(
+                          duration: Duration(milliseconds: 1500),
+                          curve: Curves.easeInOut,
+                        ),
+                      ],
+                      onComplete: (controller) {
+                        controller.repeat(
+                            reverse: true); // Repeat the animation infinitely
+                      },
+                      child: Text(
+                        'Scroll Down',
+                        style: TextStyle(color: Colors.white54),
+                      ),
                     ),
-                    Icon(
-                      Icons.arrow_downward_outlined,
-                      color: Colors.white,
+                    Animate(
+                      effects: [
+                        FadeEffect(
+                          duration: Duration(milliseconds: 1500),
+                          curve: Curves.easeInOut,
+                        ),
+                        MoveEffect(
+                          duration: Duration(milliseconds: 1500),
+                          curve: Curves.easeInOut,
+                        ),
+                      ],
+                      onComplete: (controller) {
+                        controller.repeat(
+                            reverse: true); // Repeat the animation infinitely
+                      },
+                      child: Icon(
+                        Icons.arrow_downward_outlined,
+                        color: Colors.white,
+                      ),
                     ),
                   ],
                 ),
@@ -547,5 +933,15 @@ class _LeadFormState extends State<LeadForm> {
             ],
           ),
         ));
+  }
+
+  Future<void> _selectDate() async {
+    DateTime? _datePicked = await showDatePicker(
+        context: context, firstDate: DateTime(2000), lastDate: DateTime(2100));
+    if (_datePicked != null) {
+      setState(() {
+        dateController.text = _datePicked.toString().split(" ")[0];
+      });
+    }
   }
 }
