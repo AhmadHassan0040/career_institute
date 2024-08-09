@@ -10,58 +10,72 @@ class myDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.teal.shade800,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(50), topRight: Radius.circular(50))),
+              bottomRight: Radius.circular(25), topRight: Radius.circular(25))),
       child: Center(
           child: Column(
         children: [
-          SizedBox(
-            height: 100,
-          ),
-          Container(
-            height: 100,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Colors.blueGrey.shade900,
-                  Colors.blue.shade900,
-                  Colors.greenAccent
-                ]),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.shade900,
-                      offset: Offset(0, 5),
-                      spreadRadius: 4,
-                      blurRadius: 10)
-                ],
-                border: Border(
-                    bottom: BorderSide(color: Colors.white),
-                    top: BorderSide(color: Colors.white))),
-            child: ListTile(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-              leading: Container(
-                width: 80,
-                height: 80,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white),
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'lib/images/career institute.jpg',
+          Stack(
+            children: [
+              Image.asset(
+                'lib/images/career institute indoor.jpg',
+                color: Colors.green,
+                colorBlendMode: BlendMode.color,
+                fit: BoxFit.cover,
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 100,
+                  ),
+                  Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          Colors.blueGrey.shade900,
+                          Colors.blue.shade900,
+                          Colors.greenAccent
+                        ]),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey.shade900,
+                              offset: Offset(0, 5),
+                              spreadRadius: 4,
+                              blurRadius: 10)
+                        ],
+                        border: Border(
+                            bottom: BorderSide(color: Colors.white),
+                            top: BorderSide(color: Colors.white))),
+                    child: ListTile(
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+                      leading: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'lib/images/career institute.jpg',
+                              ),
+                            )),
                       ),
-                    )),
+                      titleAlignment: ListTileTitleAlignment.bottom,
+                      title: Text(
+                        'WELCOME,\n    $currentUser',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              titleAlignment: ListTileTitleAlignment.bottom,
-              title: Text(
-                'WELCOME,\n    $currentUser',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15),
-              ),
-            ),
+            ],
           ),
           SizedBox(
             height: 30,
