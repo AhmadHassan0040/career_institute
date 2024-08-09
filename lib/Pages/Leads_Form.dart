@@ -931,7 +931,10 @@ class _LeadFormState extends State<LeadForm> {
 
   Future<void> _selectDate() async {
     DateTime? _datePicked = await showDatePicker(
-        context: context, firstDate: DateTime(2000), lastDate: DateTime(2100));
+        context: context,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2100),
+        initialDate: DateTime.now());
     if (_datePicked != null) {
       setState(() {
         dateController.text = _datePicked.toString().split(" ")[0];
