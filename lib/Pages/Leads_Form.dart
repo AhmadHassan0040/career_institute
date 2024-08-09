@@ -585,7 +585,7 @@ class _LeadFormState extends State<LeadForm> {
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Center(
                                     child: DropdownButton<String>(
-                                      value: selectedCity,
+                                      value: selectedCourse,
                                       borderRadius: BorderRadius.circular(8),
                                       hint: RichText(
                                         text: TextSpan(children: [
@@ -629,7 +629,7 @@ class _LeadFormState extends State<LeadForm> {
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Center(
                                     child: DropdownButton<String>(
-                                      value: selectedCity,
+                                      value: selectedMSource,
                                       borderRadius: BorderRadius.circular(8),
                                       hint: RichText(
                                         text: TextSpan(children: [
@@ -680,7 +680,7 @@ class _LeadFormState extends State<LeadForm> {
                                               BorderRadius.circular(8)),
                                       child: Center(
                                         child: DropdownButton<String>(
-                                          value: selectedCity,
+                                          value: selectedOrigin,
                                           borderRadius:
                                               BorderRadius.circular(8),
                                           hint: RichText(
@@ -729,7 +729,7 @@ class _LeadFormState extends State<LeadForm> {
                                               BorderRadius.circular(8)),
                                       child: Center(
                                         child: DropdownButton<String>(
-                                          value: selectedCity,
+                                          value: selectedCampus,
                                           borderRadius:
                                               BorderRadius.circular(8),
                                           hint: RichText(
