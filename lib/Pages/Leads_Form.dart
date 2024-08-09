@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings
+
+import 'package:career_institute/DataHandling/Data.dart';
 import 'package:career_institute/Modules/myDrawer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LeadForm extends StatefulWidget {
   const LeadForm({super.key});
@@ -10,74 +13,7 @@ class LeadForm extends StatefulWidget {
 }
 
 class _LeadFormState extends State<LeadForm> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneNoController = TextEditingController();
-  TextEditingController areaController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
-  TextEditingController remarksController = TextEditingController();
-
-  List<String> City = [
-    'City A',
-    'City B',
-    'City C',
-    'City D',
-    'City E',
-  ];
-  String? selectedCity;
-
-  List<String> Country = [
-    'Country A',
-    'Country B',
-    'Country C',
-    'Country D',
-    'Country E',
-  ];
-  String? selectedCountry;
-
-  List<String> GenderOptions = ['MALE', 'FEMALE', 'OTHER'];
-  String? currentGender;
-
-  List<String> TMethodOptions = ['ONLINE', 'ON-CAMPUS'];
-  String? currentTMethod;
-
-  List<String> Courses = [
-    'Course A',
-    'Course B',
-    'Course C',
-    'Course D',
-    'Course E',
-  ];
-  String? selectedCourse;
-
-  List<String> MarketingOptions = [
-    'Marketing Source A',
-    'Marketing Source B',
-    'Marketing Source C',
-    'Marketing Source D',
-    'Marketing Source E',
-  ];
-  String? selectedMSource;
-
-  List<String> OriginOptions = [
-    'Origin A',
-    'Origin B',
-    'Origin C',
-    'Origin D',
-    'Origin E',
-  ];
-  String? selectedOrigin;
-
-  List<String> PreferredCampus = [
-    'Campus A',
-    'Campus B',
-    'Campus C',
-    'Campus D',
-    'Campus E',
-  ];
-  String? selectedCampus;
-
-  double sliderValue = 0;
+  LeadData formData = Get.put(LeadData());
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +91,7 @@ class _LeadFormState extends State<LeadForm> {
                             Container(
                               height: 55,
                               child: TextField(
-                                controller: nameController,
+                                controller: formData.nameController,
                                 decoration: InputDecoration(
                                     label: RichText(
                                       text: TextSpan(children: [
@@ -188,7 +124,7 @@ class _LeadFormState extends State<LeadForm> {
                             Container(
                               height: 55,
                               child: TextField(
-                                controller: emailController,
+                                controller: formData.emailController,
                                 decoration: InputDecoration(
                                     label: RichText(
                                       text: TextSpan(children: [
@@ -221,7 +157,7 @@ class _LeadFormState extends State<LeadForm> {
                             Container(
                               height: 55,
                               child: TextField(
-                                controller: phoneNoController,
+                                controller: formData.phoneNoController,
                                 decoration: InputDecoration(
                                     label: RichText(
                                       text: TextSpan(children: [
@@ -254,7 +190,7 @@ class _LeadFormState extends State<LeadForm> {
                             Container(
                               height: 55,
                               child: TextField(
-                                controller: areaController,
+                                controller: formData.areaController,
                                 decoration: InputDecoration(
                                     label: RichText(
                                       text: TextSpan(children: [
@@ -295,7 +231,7 @@ class _LeadFormState extends State<LeadForm> {
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Center(
                                     child: DropdownButton<String>(
-                                      value: selectedCity,
+                                      value: formData.selectedCity,
                                       borderRadius: BorderRadius.circular(8),
                                       hint: RichText(
                                         text: TextSpan(children: [
@@ -315,7 +251,7 @@ class _LeadFormState extends State<LeadForm> {
                                           ),
                                         ]),
                                       ),
-                                      items: City.map((String value) {
+                                      items: formData.City.map((String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: Text(value),
@@ -323,7 +259,7 @@ class _LeadFormState extends State<LeadForm> {
                                       }).toList(),
                                       onChanged: (newValue) {
                                         setState(() {
-                                          selectedCity = newValue;
+                                          formData.selectedCity = newValue;
                                         });
                                       },
                                     ),
@@ -340,7 +276,7 @@ class _LeadFormState extends State<LeadForm> {
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Center(
                                     child: DropdownButton<String>(
-                                      value: selectedCountry,
+                                      value: formData.selectedCountry,
                                       borderRadius: BorderRadius.circular(8),
                                       hint: RichText(
                                         text: TextSpan(children: [
@@ -360,7 +296,8 @@ class _LeadFormState extends State<LeadForm> {
                                           ),
                                         ]),
                                       ),
-                                      items: Country.map((String value) {
+                                      items:
+                                          formData.Country.map((String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: Text(value),
@@ -368,7 +305,7 @@ class _LeadFormState extends State<LeadForm> {
                                       }).toList(),
                                       onChanged: (newValue) {
                                         setState(() {
-                                          selectedCountry = newValue;
+                                          formData.selectedCountry = newValue;
                                         });
                                       },
                                     ),
@@ -414,11 +351,12 @@ class _LeadFormState extends State<LeadForm> {
                                     children: [
                                       Radio(
                                           activeColor: Colors.red.shade900,
-                                          value: GenderOptions[0],
-                                          groupValue: currentGender,
+                                          value: formData.GenderOptions[0],
+                                          groupValue: formData.currentGender,
                                           onChanged: (value) {
                                             setState(() {
-                                              currentGender = value.toString();
+                                              formData.currentGender =
+                                                  value.toString();
                                             });
                                           }),
                                       Text(
@@ -429,11 +367,12 @@ class _LeadFormState extends State<LeadForm> {
                                       ),
                                       Radio(
                                           activeColor: Colors.red.shade900,
-                                          value: GenderOptions[1],
-                                          groupValue: currentGender,
+                                          value: formData.GenderOptions[1],
+                                          groupValue: formData.currentGender,
                                           onChanged: (value) {
                                             setState(() {
-                                              currentGender = value.toString();
+                                              formData.currentGender =
+                                                  value.toString();
                                             });
                                           }),
                                       Text(
@@ -444,11 +383,12 @@ class _LeadFormState extends State<LeadForm> {
                                       ),
                                       Radio(
                                           activeColor: Colors.red.shade900,
-                                          value: GenderOptions[2],
-                                          groupValue: currentGender,
+                                          value: formData.GenderOptions[2],
+                                          groupValue: formData.currentGender,
                                           onChanged: (value) {
                                             setState(() {
-                                              currentGender = value.toString();
+                                              formData.currentGender =
+                                                  value.toString();
                                             });
                                           }),
                                       Text(
@@ -500,11 +440,12 @@ class _LeadFormState extends State<LeadForm> {
                                     children: [
                                       Radio(
                                           activeColor: Colors.red.shade900,
-                                          value: TMethodOptions[0],
-                                          groupValue: currentTMethod,
+                                          value: formData.TMethodOptions[0],
+                                          groupValue: formData.currentTMethod,
                                           onChanged: (value) {
                                             setState(() {
-                                              currentTMethod = value.toString();
+                                              formData.currentTMethod =
+                                                  value.toString();
                                             });
                                           }),
                                       Text(
@@ -518,11 +459,12 @@ class _LeadFormState extends State<LeadForm> {
                                       ),
                                       Radio(
                                           activeColor: Colors.red.shade900,
-                                          value: TMethodOptions[1],
-                                          groupValue: currentTMethod,
+                                          value: formData.TMethodOptions[1],
+                                          groupValue: formData.currentTMethod,
                                           onChanged: (value) {
                                             setState(() {
-                                              currentTMethod = value.toString();
+                                              formData.currentTMethod =
+                                                  value.toString();
                                             });
                                           }),
                                       Text(
@@ -546,7 +488,7 @@ class _LeadFormState extends State<LeadForm> {
                                   borderRadius: BorderRadius.circular(8)),
                               child: Center(
                                 child: DropdownButton<String>(
-                                  value: selectedCourse,
+                                  value: formData.selectedCourse,
                                   borderRadius: BorderRadius.circular(8),
                                   hint: RichText(
                                     text: TextSpan(children: [
@@ -566,7 +508,7 @@ class _LeadFormState extends State<LeadForm> {
                                       ),
                                     ]),
                                   ),
-                                  items: Courses.map((String value) {
+                                  items: formData.Courses.map((String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: Text(value),
@@ -574,7 +516,7 @@ class _LeadFormState extends State<LeadForm> {
                                   }).toList(),
                                   onChanged: (newValue) {
                                     setState(() {
-                                      selectedCourse = newValue;
+                                      formData.selectedCourse = newValue;
                                     });
                                   },
                                 ),
@@ -590,7 +532,7 @@ class _LeadFormState extends State<LeadForm> {
                                   borderRadius: BorderRadius.circular(8)),
                               child: Center(
                                 child: DropdownButton<String>(
-                                  value: selectedMSource,
+                                  value: formData.selectedMSource,
                                   borderRadius: BorderRadius.circular(8),
                                   hint: RichText(
                                     text: TextSpan(children: [
@@ -610,7 +552,8 @@ class _LeadFormState extends State<LeadForm> {
                                       ),
                                     ]),
                                   ),
-                                  items: MarketingOptions.map((String value) {
+                                  items: formData.MarketingOptions.map(
+                                      (String value) {
                                     return DropdownMenuItem<String>(
                                       value: value,
                                       child: Text(value),
@@ -618,7 +561,7 @@ class _LeadFormState extends State<LeadForm> {
                                   }).toList(),
                                   onChanged: (newValue) {
                                     setState(() {
-                                      selectedMSource = newValue;
+                                      formData.selectedMSource = newValue;
                                     });
                                   },
                                 ),
@@ -638,7 +581,7 @@ class _LeadFormState extends State<LeadForm> {
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Center(
                                     child: DropdownButton<String>(
-                                      value: selectedOrigin,
+                                      value: formData.selectedOrigin,
                                       borderRadius: BorderRadius.circular(8),
                                       hint: RichText(
                                         text: TextSpan(children: [
@@ -658,7 +601,8 @@ class _LeadFormState extends State<LeadForm> {
                                           ),
                                         ]),
                                       ),
-                                      items: OriginOptions.map((String value) {
+                                      items: formData.OriginOptions.map(
+                                          (String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: Text(value),
@@ -666,7 +610,7 @@ class _LeadFormState extends State<LeadForm> {
                                       }).toList(),
                                       onChanged: (newValue) {
                                         setState(() {
-                                          selectedOrigin = newValue;
+                                          formData.selectedOrigin = newValue;
                                         });
                                       },
                                     ),
@@ -683,7 +627,7 @@ class _LeadFormState extends State<LeadForm> {
                                       borderRadius: BorderRadius.circular(8)),
                                   child: Center(
                                     child: DropdownButton<String>(
-                                      value: selectedCampus,
+                                      value: formData.selectedCampus,
                                       borderRadius: BorderRadius.circular(8),
                                       hint: RichText(
                                         text: TextSpan(children: [
@@ -703,8 +647,8 @@ class _LeadFormState extends State<LeadForm> {
                                           ),
                                         ]),
                                       ),
-                                      items:
-                                          PreferredCampus.map((String value) {
+                                      items: formData.PreferredCampus.map(
+                                          (String value) {
                                         return DropdownMenuItem<String>(
                                           value: value,
                                           child: Text(value),
@@ -712,7 +656,7 @@ class _LeadFormState extends State<LeadForm> {
                                       }).toList(),
                                       onChanged: (newValue) {
                                         setState(() {
-                                          selectedCampus = newValue;
+                                          formData.selectedCampus = newValue;
                                         });
                                       },
                                     ),
@@ -726,7 +670,7 @@ class _LeadFormState extends State<LeadForm> {
                             Container(
                               height: 55,
                               child: TextField(
-                                controller: dateController,
+                                controller: formData.dateController,
                                 onTap: () {
                                   _selectDate();
                                 },
@@ -783,13 +727,13 @@ class _LeadFormState extends State<LeadForm> {
                                 divisions: 10,
                                 min: 0,
                                 max: 100,
-                                label: sliderValue.toString(),
+                                label: formData.sliderValue.toString(),
                                 thumbColor: Colors.blue.shade900,
                                 activeColor: Colors.grey.shade900,
-                                value: sliderValue,
+                                value: formData.sliderValue,
                                 onChanged: (newValue) {
                                   setState(() {
-                                    sliderValue = newValue;
+                                    formData.sliderValue = newValue;
                                   });
                                 }),
                             SizedBox(
@@ -802,7 +746,7 @@ class _LeadFormState extends State<LeadForm> {
                                 textAlignVertical: TextAlignVertical.top,
                                 expands: true,
                                 maxLines: null,
-                                controller: remarksController,
+                                controller: formData.remarksController,
                                 decoration: InputDecoration(
                                     label: RichText(
                                       text: TextSpan(children: [
@@ -848,26 +792,26 @@ class _LeadFormState extends State<LeadForm> {
                                               borderRadius:
                                                   BorderRadius.circular(12)),
                                           child: Text('Name: ' +
-                                              nameController.text +
+                                              formData.nameController.text +
                                               '\nEmail: ' +
-                                              emailController.text +
+                                              formData.emailController.text +
                                               '\nPhone No: ' +
-                                              phoneNoController.text +
+                                              formData.phoneNoController.text +
                                               '\nArea: ' +
-                                              areaController.text +
+                                              formData.areaController.text +
                                               '\nDate: ' +
-                                              dateController.text +
+                                              formData.dateController.text +
                                               '\nRemarks: ' +
-                                              remarksController.text +
-                                              '\nCity: $selectedCity' +
-                                              '\nCountry: $selectedCountry' +
-                                              '\nGender: $currentGender' +
-                                              '\nTeaching Method: $currentTMethod' +
-                                              '\nCourse: $selectedCourse' +
-                                              '\nMarketing Source: $selectedMSource' +
-                                              '\nOrigin: $selectedOrigin' +
-                                              '\nPreferred Campus: $selectedCampus' +
-                                              '\nProbability: $sliderValue'),
+                                              formData.remarksController.text +
+                                              '\nCity: ${formData.selectedCity}' +
+                                              '\nCountry: ${formData.selectedCountry}' +
+                                              '\nGender: ${formData.currentGender}' +
+                                              '\nTeaching Method: ${formData.currentTMethod}' +
+                                              '\nCourse: ${formData.selectedCourse}' +
+                                              '\nMarketing Source: ${formData.selectedMSource}' +
+                                              '\nOrigin: ${formData.selectedOrigin}' +
+                                              '\nPreferred Campus: ${formData.selectedCampus}' +
+                                              '\nProbability: ${formData.sliderValue}'),
                                         ));
                                       },
                                     );
@@ -937,7 +881,7 @@ class _LeadFormState extends State<LeadForm> {
         initialDate: DateTime.now());
     if (_datePicked != null) {
       setState(() {
-        dateController.text = _datePicked.toString().split(" ")[0];
+        formData.dateController.text = _datePicked.toString().split(" ")[0];
       });
     }
   }

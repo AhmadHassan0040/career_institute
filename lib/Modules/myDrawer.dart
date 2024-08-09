@@ -10,7 +10,7 @@ class myDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.teal.shade800,
+      backgroundColor: Colors.blue.shade900,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(25), topRight: Radius.circular(25))),
@@ -21,7 +21,7 @@ class myDrawer extends StatelessWidget {
             children: [
               Image.asset(
                 'lib/images/career institute indoor.jpg',
-                color: Colors.green,
+                color: Colors.blue,
                 colorBlendMode: BlendMode.color,
                 fit: BoxFit.cover,
               ),
@@ -80,6 +80,24 @@ class myDrawer extends StatelessWidget {
           ),
           SizedBox(
             height: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Divider(
+              thickness: 2,
+            ),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 40),
+            leading: Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            title: Text(
+              'HOME PAGE',
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),

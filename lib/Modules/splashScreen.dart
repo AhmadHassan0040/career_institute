@@ -17,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
+
     // Navigate to the main screen after a delay
     Future.delayed(Duration(seconds: 3), () {
       Get.off(LeadForm(),
