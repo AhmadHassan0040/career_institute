@@ -36,7 +36,8 @@ class myDrawer extends StatelessWidget {
                         gradient: LinearGradient(colors: [
                           Colors.blueGrey.shade900,
                           Colors.blue.shade900,
-                          Colors.greenAccent
+                          Colors.blue.shade900,
+                          Colors.blueGrey.shade900,
                         ]),
                         boxShadow: [
                           BoxShadow(
