@@ -121,7 +121,7 @@ class Login extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           Get.offAll(LeadForm(),
-                              transition: Transition.zoom,
+                              transition: Transition.rightToLeftWithFade,
                               duration: Duration(seconds: 1));
                         },
                         child: Container(
@@ -144,7 +144,7 @@ class Login extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           Get.off(Signup(),
-                              transition: Transition.topLevel,
+                              transition: Transition.downToUp,
                               duration: Duration(milliseconds: 500));
                         },
                         child: Text(

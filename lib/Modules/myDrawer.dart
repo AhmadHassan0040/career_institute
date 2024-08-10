@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:career_institute/Startup_initial_Pages/login-or-signup.dart';
 import 'package:flutter/material.dart';
@@ -163,7 +163,9 @@ class myDrawer extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Get.offAll(Log_or_Sign_init());
+              Get.offAll(Log_or_Sign_init(),
+                  transition: Transition.fadeIn,
+                  duration: Duration(milliseconds: 500));
             },
             child: ListTile(
               contentPadding: EdgeInsets.symmetric(horizontal: 40),

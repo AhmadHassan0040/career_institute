@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:career_institute/Pages/Leads_Form.dart';
 import 'package:career_institute/Startup_initial_Pages/login-or-signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -58,10 +57,10 @@ class _SplashScreenState extends State<SplashScreen>
               FadeEffect(duration: Duration(seconds: 1)),
             ], child: Text('BUILD YOUR FUTUTRE WITH US')),
             SizedBox(
-              height: 10,
+              height: 25,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 80.0),
+              padding: const EdgeInsets.symmetric(horizontal: 100.0),
               child: LinearProgressIndicator(
                 color: Colors.grey.shade900,
               ),

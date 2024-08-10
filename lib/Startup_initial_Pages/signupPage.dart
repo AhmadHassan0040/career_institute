@@ -152,7 +152,7 @@ class Signup extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           Get.off(Login(),
-                              transition: Transition.topLevel,
+                              transition: Transition.downToUp,
                               duration: Duration(milliseconds: 500));
                         },
                         child: Text(
