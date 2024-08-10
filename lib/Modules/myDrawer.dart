@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:career_institute/Startup_initial_Pages/login-or-signup.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class myDrawer extends StatelessWidget {
   myDrawer({super.key});
@@ -159,16 +161,21 @@ class myDrawer extends StatelessWidget {
               thickness: 2,
             ),
           ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 40),
-            leading: Icon(
-              Icons.logout,
-              color: Colors.white,
-            ),
-            title: Text(
-              'LOGOUT',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          GestureDetector(
+            onTap: () {
+              Get.offAll(Log_or_Sign_init());
+            },
+            child: ListTile(
+              contentPadding: EdgeInsets.symmetric(horizontal: 40),
+              leading: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              title: Text(
+                'LOGOUT',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           Padding(
