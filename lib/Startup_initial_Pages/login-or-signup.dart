@@ -55,7 +55,10 @@ class Log_or_Sign_init extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(Login(), transition: Transition.fadeIn);
+                    Get.to(Login(),
+                        transition: Transition.circularReveal,
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.easeInOut);
                   },
                   child: Container(
                     width: 250,
@@ -77,7 +80,10 @@ class Log_or_Sign_init extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(Signup(), transition: Transition.fadeIn);
+                    Get.to(Signup(),
+                        transition: Transition.circularReveal,
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.easeInOut);
                   },
                   child: Container(
                     width: 250,

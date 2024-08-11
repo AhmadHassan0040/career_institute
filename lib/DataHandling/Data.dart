@@ -3,6 +3,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+class LoginData extends GetxController {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+}
+
+class SignupData extends GetxController {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+  TextEditingController rePassController = TextEditingController();
+}
+
 class LeadData extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();

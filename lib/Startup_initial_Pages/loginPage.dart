@@ -1,13 +1,18 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:career_institute/DataHandling/Data.dart';
 import 'package:career_institute/Pages/Leads_Form.dart';
 import 'package:career_institute/Startup_initial_Pages/signupPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
+final _formKey = GlobalKey<FormState>();
+
 class Login extends StatelessWidget {
-  const Login({super.key});
+  Login({super.key});
+
+  LoginData formData = Get.put(LoginData());
 
   @override
   Widget build(BuildContext context) {
@@ -84,78 +89,98 @@ class Login extends StatelessWidget {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30))),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 50),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: TextField(
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                              labelText: 'EMAIL',
-                              labelStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                              hintText: 'ENTER EMAIL HERE...',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8))),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 50),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: TextFormField(
+                            controller: formData.emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                labelText: 'EMAIL',
+                                labelStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                hintText: 'ENTER EMAIL HERE...',
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8))),
+                            validator: (Value) {
+                              if (Value!.isEmpty) {
+                                return 'Please Enter Email First...';
+                              }
+                            },
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: TextField(
-                          obscureText: true,
-                          keyboardType: TextInputType.visiblePassword,
-                          decoration: InputDecoration(
-                              labelText: 'PASSWORD',
-                              labelStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                              hintText: 'ENTER PASSWORD HERE...',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8))),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: TextFormField(
+                            controller: formData.passController,
+                            obscureText: true,
+                            keyboardType: TextInputType.visiblePassword,
+                            decoration: InputDecoration(
+                                labelText: 'PASSWORD',
+                                labelStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                hintText: 'ENTER PASSWORD HERE...',
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8))),
+                            validator: (Value) {
+                              if (Value!.isEmpty) {
+                                return 'Please Enter Password First...';
+                              }
+                            },
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 40),
-                      GestureDetector(
-                        onTap: () {
-                          Get.offAll(LeadForm(),
-                              transition: Transition.rightToLeftWithFade,
-                              duration: Duration(seconds: 1));
-                        },
-                        child: Container(
-                          width: 250,
-                          height: 50,
-                          decoration: BoxDecoration(
-                              color: Colors.blue.shade900,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(
-                            child: Text(
-                              'LOG IN',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                        SizedBox(height: 40),
+                        GestureDetector(
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                              if (formData.emailController.text == 'a' &&
+                                  formData.passController.text == 'b') {
+                                Get.offAll(LeadForm(),
+                                    transition: Transition.rightToLeftWithFade,
+                                    duration: Duration(seconds: 1));
+                              }
+                            }
+                          },
+                          child: Container(
+                            width: 250,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade900,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child: Text(
+                                'LOG IN',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      GestureDetector(
-                        onTap: () {
-                          Get.off(Signup(),
-                              transition: Transition.downToUp,
-                              duration: Duration(milliseconds: 500));
-                        },
-                        child: Text(
-                          'DON\'T HAVE AN ACCOUNT',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12),
-                        ),
-                      )
-                    ],
+                        SizedBox(height: 20),
+                        GestureDetector(
+                          onTap: () {
+                            Get.off(Signup(),
+                                transition: Transition.downToUp,
+                                duration: Duration(milliseconds: 500));
+                          },
+                          child: Text(
+                            'DON\'T HAVE AN ACCOUNT',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )
