@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Log_or_Sign_init extends StatelessWidget {
   const Log_or_Sign_init({super.key});
@@ -105,7 +106,7 @@ class Log_or_Sign_init extends StatelessWidget {
                   height: 50,
                 ),
                 Text(
-                  'VISITE OUR SOCIAL MEDIA',
+                  'VISIT OUR SOCIAL MEDIA',
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
@@ -118,7 +119,11 @@ class Log_or_Sign_init extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: Colors.white),
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            final url = Uri.parse(
+                                'https://www.instagram.com/careerinstituteofficial/');
+                            launchUrl(url, mode: LaunchMode.inAppWebView);
+                          },
                           icon: FaIcon(
                             FontAwesomeIcons.instagram,
                             color: Colors.blue.shade900,
@@ -131,7 +136,11 @@ class Log_or_Sign_init extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: Colors.white),
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            final url = Uri.parse(
+                                'https://www.linkedin.com/company/careerinstituteofficial/');
+                            launchUrl(url, mode: LaunchMode.inAppWebView);
+                          },
                           icon: FaIcon(
                             FontAwesomeIcons.linkedinIn,
                             color: Colors.blue.shade900,
@@ -144,7 +153,11 @@ class Log_or_Sign_init extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: Colors.white),
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            final url = Uri.parse(
+                                'https://www.facebook.com/careerinstituteofficial/');
+                            launchUrl(url, mode: LaunchMode.inAppWebView);
+                          },
                           icon: FaIcon(
                             FontAwesomeIcons.facebookF,
                             color: Colors.blue.shade900,
