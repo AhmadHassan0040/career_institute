@@ -111,6 +111,13 @@ class Login extends StatelessWidget {
                               if (Value!.isEmpty) {
                                 return 'Please Enter Email First...';
                               }
+                              final emailRegex =
+                                  RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+
+                              if (!emailRegex.hasMatch(Value)) {
+                                return 'Please enter a valid email address.';
+                              }
+                              return null;
                             },
                           ),
                         ),
@@ -133,6 +140,8 @@ class Login extends StatelessWidget {
                               if (Value!.isEmpty) {
                                 return 'Please Enter Password First...';
                               }
+
+                              return null;
                             },
                           ),
                         ),
@@ -140,8 +149,10 @@ class Login extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             if (_formKey.currentState!.validate()) {
-                              if (formData.emailController.text == 'a' &&
-                                  formData.passController.text == 'b') {
+                              if (formData.emailController.text ==
+                                      'hasan.hasanf80@gmail.com' &&
+                                  formData.passController.text ==
+                                      'A03344067219a!') {
                                 Get.offAll(LeadForm(),
                                     transition: Transition.rightToLeftWithFade,
                                     duration: Duration(seconds: 1));

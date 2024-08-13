@@ -15,7 +15,7 @@ class myDrawer extends StatelessWidget {
       backgroundColor: Colors.blue.shade900,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(25), topRight: Radius.circular(25))),
+              bottomRight: Radius.circular(0), topRight: Radius.circular(0))),
       child: Center(
           child: Column(
         children: [
@@ -89,16 +89,22 @@ class myDrawer extends StatelessWidget {
               thickness: 2,
             ),
           ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 40),
-            leading: Icon(
-              Icons.home,
-              color: Colors.white,
-            ),
-            title: Text(
-              'HOME PAGE',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: ListTile(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+              tileColor: Colors.white,
+              contentPadding: EdgeInsets.symmetric(horizontal: 40),
+              leading: Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              title: Text(
+                'HOME PAGE',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           Padding(
@@ -107,16 +113,22 @@ class myDrawer extends StatelessWidget {
               thickness: 2,
             ),
           ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 40),
-            leading: Icon(
-              Icons.account_box,
-              color: Colors.white,
-            ),
-            title: Text(
-              'ACCOUNT SETTINGS',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: ListTile(
+              tileColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+              contentPadding: EdgeInsets.symmetric(horizontal: 40),
+              leading: Icon(
+                Icons.account_box,
+                color: Colors.black,
+              ),
+              title: Text(
+                'ACCOUNT SETTINGS',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           Padding(
@@ -125,16 +137,22 @@ class myDrawer extends StatelessWidget {
               thickness: 2,
             ),
           ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 40),
-            leading: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            title: Text(
-              'SETTINGS',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: ListTile(
+              tileColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+              contentPadding: EdgeInsets.symmetric(horizontal: 40),
+              leading: Icon(
+                Icons.settings,
+                color: Colors.black,
+              ),
+              title: Text(
+                'SETTINGS',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           Padding(
@@ -143,16 +161,22 @@ class myDrawer extends StatelessWidget {
               thickness: 2,
             ),
           ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 40),
-            leading: Icon(
-              Icons.question_answer,
-              color: Colors.white,
-            ),
-            title: Text(
-              'FAQ',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: ListTile(
+              tileColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+              contentPadding: EdgeInsets.symmetric(horizontal: 40),
+              leading: Icon(
+                Icons.question_answer,
+                color: Colors.black,
+              ),
+              title: Text(
+                'FAQ',
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           Padding(
@@ -167,16 +191,22 @@ class myDrawer extends StatelessWidget {
                   transition: Transition.fadeIn,
                   duration: Duration(milliseconds: 500));
             },
-            child: ListTile(
-              contentPadding: EdgeInsets.symmetric(horizontal: 40),
-              leading: Icon(
-                Icons.logout,
-                color: Colors.white,
-              ),
-              title: Text(
-                'LOGOUT',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: ListTile(
+                tileColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                contentPadding: EdgeInsets.symmetric(horizontal: 40),
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.black,
+                ),
+                title: Text(
+                  'LOGOUT',
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),

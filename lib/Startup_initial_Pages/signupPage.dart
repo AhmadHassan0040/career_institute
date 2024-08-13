@@ -1,12 +1,17 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:career_institute/DataHandling/Data.dart';
 import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 
+final _formKey = GlobalKey<FormState>();
+
 class Signup extends StatelessWidget {
-  const Signup({super.key});
+  Signup({super.key});
+
+  SignupData formData = SignupData();
 
   @override
   Widget build(BuildContext context) {
@@ -83,87 +88,139 @@ class Signup extends StatelessWidget {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30))),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 50),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: TextField(
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                              labelText: 'EMAIL',
-                              labelStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                              hintText: 'ENTER EMAIL HERE...',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8))),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: TextField(
-                          obscureText: true,
-                          keyboardType: TextInputType.visiblePassword,
-                          decoration: InputDecoration(
-                              labelText: 'PASSWORD',
-                              labelStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                              hintText: 'ENTER PASSWORD HERE...',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8))),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        child: TextField(
-                          obscureText: true,
-                          keyboardType: TextInputType.visiblePassword,
-                          decoration: InputDecoration(
-                              labelText: 'RE-ENTER',
-                              labelStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                              hintText: 'RE-ENTER PASSWORD HERE...',
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8))),
-                        ),
-                      ),
-                      SizedBox(height: 40),
-                      Container(
-                        width: 250,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: Colors.blue.shade900,
-                            borderRadius: BorderRadius.circular(50)),
-                        child: Center(
-                          child: Text(
-                            'SIGN UP',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 50),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: TextFormField(
+                            controller: formData.emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                labelText: 'EMAIL',
+                                labelStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                hintText: 'ENTER EMAIL HERE...',
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8))),
+                            validator: (Value) {
+                              if (Value!.isEmpty) {
+                                return 'Please Enter Email First...';
+                              }
+                              final emailRegex =
+                                  RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+
+                              if (!emailRegex.hasMatch(Value)) {
+                                return 'Please enter a valid email address.';
+                              }
+                              return null;
+                            },
                           ),
                         ),
-                      ),
-                      SizedBox(height: 20),
-                      GestureDetector(
-                        onTap: () {
-                          Get.off(Login(),
-                              transition: Transition.downToUp,
-                              duration: Duration(milliseconds: 500));
-                        },
-                        child: Text(
-                          'ALREADY HAVE AN ACCOUNT',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: TextFormField(
+                            controller: formData.passController,
+                            obscureText: true,
+                            keyboardType: TextInputType.visiblePassword,
+                            decoration: InputDecoration(
+                                labelText: 'PASSWORD',
+                                labelStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                hintText: 'ENTER PASSWORD HERE...',
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8))),
+                            validator: (Value) {
+                              if (Value!.isEmpty) {
+                                return 'Please Enter Password First...';
+                              }
+                              final passwordRegex = RegExp(
+                                  r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$&*~]).+$');
+
+                              if (Value.length < 8 &&
+                                  !passwordRegex.hasMatch(Value)) {
+                                return 'Password must be at least 8 characters long.\nPassword must include:\n- At least one uppercase letter,\n- One lowercase letter,\n- And one special character.';
+                              }
+                              return null;
+                            },
+                          ),
                         ),
-                      )
-                    ],
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                          child: TextFormField(
+                            controller: formData.rePassController,
+                            obscureText: true,
+                            keyboardType: TextInputType.visiblePassword,
+                            decoration: InputDecoration(
+                                labelText: 'RE-ENTER',
+                                labelStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                hintText: 'RE-ENTER PASSWORD HERE...',
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8))),
+                            validator: (Value) {
+                              if (Value!.isEmpty) {
+                                return 'Please Re-Enter Password First...';
+                              }
+
+                              if (formData.passController.text == '') {
+                                return 'Enter Password First';
+                              }
+
+                              if (Value != formData.passController.text) {
+                                return 'Passwords do not match.';
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        SizedBox(height: 40),
+                        GestureDetector(
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                              print(formData.passController.text);
+                            }
+                          },
+                          child: Container(
+                            width: 250,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade900,
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Center(
+                              child: Text(
+                                'SIGN UP',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        GestureDetector(
+                          onTap: () {
+                            Get.off(Login(),
+                                transition: Transition.downToUp,
+                                duration: Duration(milliseconds: 500));
+                          },
+                          child: Text(
+                            'ALREADY HAVE AN ACCOUNT',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )

@@ -57,30 +57,32 @@ class _LeadFormState extends State<LeadForm> {
                             SizedBox(
                               height: 10,
                             ),
-                            RichText(
-                              text: TextSpan(children: [
-                                TextSpan(
-                                  text: "(All Fields marked with ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                      color: Colors.black),
-                                ),
-                                TextSpan(
-                                  text: '*',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                      color: Colors.red),
-                                ),
-                                TextSpan(
-                                  text: ' are required)',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                      color: Colors.black),
-                                ),
-                              ]),
+                            Center(
+                              child: RichText(
+                                text: TextSpan(children: [
+                                  TextSpan(
+                                    text: "(All Fields marked with ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.black),
+                                  ),
+                                  TextSpan(
+                                    text: '*',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.red),
+                                  ),
+                                  TextSpan(
+                                    text: ' are required)',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.black),
+                                  ),
+                                ]),
+                              ),
                             ),
                             Divider(
                               color: Colors.grey.shade400,
