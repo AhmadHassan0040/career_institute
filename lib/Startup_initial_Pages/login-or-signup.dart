@@ -156,7 +156,8 @@ class Log_or_Sign_init extends StatelessWidget {
                           onPressed: () {
                             final url = Uri.parse(
                                 'https://www.facebook.com/careerinstituteofficial/');
-                            launchUrl(url, mode: LaunchMode.inAppWebView);
+                            launchUrl(url,
+                                mode: LaunchMode.externalApplication);
                           },
                           icon: FaIcon(
                             FontAwesomeIcons.facebookF,

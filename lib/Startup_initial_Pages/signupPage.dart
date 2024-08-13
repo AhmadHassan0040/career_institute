@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, must_be_immutable
 
 import 'package:career_institute/DataHandling/Data.dart';
 import 'package:career_institute/Startup_initial_Pages/loginPage.dart';

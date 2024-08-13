@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:career_institute/Modules/splashScreen.dart';
+import 'package:career_institute/Pages/Leads_Form.dart';
 // import 'package:career_institute/Pages/Leads_Form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: LeadForm(),
     );
   }
 }
