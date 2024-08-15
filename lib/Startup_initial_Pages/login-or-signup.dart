@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
-import 'package:career_institute/Startup_initial_Pages/signupPage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,12 +17,8 @@ class Log_or_Sign_init extends StatelessWidget {
       backgroundColor: Colors.blue.shade900,
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Colors.grey.shade900,
-          Colors.blue.shade900,
-          Colors.blue.shade900,
-          Colors.grey.shade900
-        ])),
+            gradient: LinearGradient(
+                colors: [Colors.blue.shade900, Colors.greenAccent])),
         child: Center(
           child: Animate(
             // ignore: prefer_const_literals_to_create_immutables
@@ -72,32 +68,6 @@ class Log_or_Sign_init extends StatelessWidget {
                         'SIGN IN',
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(Signup(),
-                        transition: Transition.circularReveal,
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeInOut);
-                  },
-                  child: Container(
-                    width: 250,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.white, width: 2),
-                        borderRadius: BorderRadius.circular(50)),
-                    child: Center(
-                      child: Text(
-                        'SIGN UP',
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
