@@ -20,7 +20,7 @@ class _LeadFormState extends State<LeadForm> {
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.indigo.shade200,
+      backgroundColor: Colors.blue.shade900,
       drawer: myDrawer(),
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -29,11 +29,21 @@ class _LeadFormState extends State<LeadForm> {
           'CREATE NEW LEAD',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.blue.shade900,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.greenAccent], // Your gradient colors
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Colors.blue.shade900,
+          decoration: BoxDecoration(
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent])),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
