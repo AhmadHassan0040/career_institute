@@ -42,7 +42,7 @@ class Signup extends StatelessWidget {
                       child: Text(
                         'CREATE\n    ACCOUNT',
                         style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.grey,
                             fontWeight: FontWeight.bold,
                             fontSize: 30),
                       ),
