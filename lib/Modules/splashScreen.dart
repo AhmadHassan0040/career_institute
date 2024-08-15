@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Navigate to the main screen after a delay
     Future.delayed(Duration(seconds: 3), () {
-      Get.off(Log_or_Sign_init(),
+      Get.off(Log_init(),
           transition: Transition.fade, duration: Duration(seconds: 1));
     });
   }

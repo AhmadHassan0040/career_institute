@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, must_be_immutable
 
 import 'package:career_institute/DataHandling/Data.dart';
+import 'package:career_institute/Pages/Dashboard.dart';
 import 'package:career_institute/Pages/Leads_Form.dart';
 
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class Login extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 25.0),
                             child: Text(
-                              'LOGIN TO\nACCOUNT',
+                              'LOGIN',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -172,8 +173,8 @@ class Login extends StatelessWidget {
                                     if (formData.emailController.text ==
                                             'hasan.hasanf80@gmail.com' &&
                                         formData.passController.text ==
-                                            'A03344067219a!') {
-                                      Get.offAll(LeadForm(),
+                                            '11111111') {
+                                      Get.offAll(Dashboard(),
                                           transition:
                                               Transition.rightToLeftWithFade,
                                           duration: Duration(seconds: 1));

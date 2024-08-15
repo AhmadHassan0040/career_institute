@@ -8,8 +8,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Log_or_Sign_init extends StatelessWidget {
-  const Log_or_Sign_init({super.key});
+class Log_init extends StatelessWidget {
+  const Log_init({super.key});
 
   @override
   Widget build(BuildContext context) {
