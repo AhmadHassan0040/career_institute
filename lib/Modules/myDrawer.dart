@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
+import 'package:career_institute/Pages/Dashboard.dart';
+import 'package:career_institute/Pages/Leads_Form.dart';
 import 'package:career_institute/Startup_initial_Pages/login-or-signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -82,6 +84,11 @@ class myDrawer extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12)),
                       child: ListTile(
+                        onTap: () {
+                          Get.off(Dashboard(),
+                              transition: Transition.circularReveal,
+                              duration: Duration(milliseconds: 500));
+                        },
                         contentPadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
                           'lib/images/Dashboard.jpeg',
@@ -91,16 +98,15 @@ class myDrawer extends StatelessWidget {
                         title: Text(
                           'DASHBOARD',
                           style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Divider(
-                      thickness: 2,
-                    ),
+                  SizedBox(
+                    height: 10,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -118,11 +124,328 @@ class myDrawer extends StatelessWidget {
                         title: Text(
                           'LEAD MANAGEMENT',
                           style: TextStyle(
-                              color: Colors.black, fontWeight: FontWeight.bold),
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
                         ),
-                        trailing: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.arrow_drop_down)),
+                        trailing: Icon(Icons.arrow_right),
+                        onTap: () {
+                          Get.defaultDialog(
+                              title: 'LEAD MANAGEMENT',
+                              titleStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                              backgroundColor: Colors.white,
+                              content: Expanded(
+                                  child: Scrollbar(
+                                thumbVisibility: true,
+                                trackVisibility: true,
+                                radius: Radius.circular(12),
+                                child: ListView(
+                                  children: [
+                                    ListTile(
+                                      onTap: () {
+                                        Get.off(LeadForm(),
+                                            transition:
+                                                Transition.circularReveal,
+                                            duration:
+                                                Duration(milliseconds: 500));
+                                      },
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Create New Lead'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Load Follow-UP'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Website Leads'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Bulk Leads'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Today\'s Leads'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Successfully Registered'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Successfully Enrolled'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Not Interested'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Transferred Leads'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('Leads in Pipeline'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      leading: Icon(
+                                        Icons.circle,
+                                        size: 10,
+                                        color: Colors.grey,
+                                      ),
+                                      title: Text('All Leads'),
+                                      titleTextStyle: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                      trailing: Container(
+                                        width: 30,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                            gradient: LinearGradient(colors: [
+                                              Colors.red,
+                                              Colors.red
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          '99+',
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )));
+                        },
                       ),
                     ),
                   ),
