@@ -2,7 +2,6 @@
 
 import 'package:career_institute/DataHandling/Data.dart';
 import 'package:career_institute/Pages/Dashboard.dart';
-import 'package:career_institute/Pages/Leads_Form.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -10,11 +9,19 @@ import 'package:get/get.dart';
 
 final _formKey = GlobalKey<FormState>();
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   Login({super.key});
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   LoginData formData = Get.put(LoginData());
 
+  bool _passwordObscure = true;
+
+  Icon _visibility = Icon(Icons.remove_red_eye_outlined);
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -40,7 +47,7 @@ class Login extends StatelessWidget {
                           effects: [
                             MoveEffect(
                                 begin: Offset(-500, 0),
-                                end: Offset(0, 0),
+                                end: Offset(40, 0),
                                 curve: Curves.easeInOut,
                                 delay: Duration(milliseconds: 500),
                                 duration: Duration(milliseconds: 1000))
@@ -59,8 +66,8 @@ class Login extends StatelessWidget {
                         Animate(
                           effects: [
                             MoveEffect(
-                                begin: Offset(-57, 0),
-                                end: Offset(50, 0),
+                                begin: Offset(25, 0),
+                                end: Offset(120, 0),
                                 curve: Curves.easeInOut,
                                 delay: Duration(milliseconds: 500),
                                 duration: Duration(milliseconds: 1000))
@@ -146,9 +153,21 @@ class Login extends StatelessWidget {
                                     horizontal: 25.0),
                                 child: TextFormField(
                                   controller: formData.passController,
-                                  obscureText: true,
+                                  obscureText: _passwordObscure,
                                   keyboardType: TextInputType.visiblePassword,
                                   decoration: InputDecoration(
+                                      suffixIcon: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              _passwordObscure =
+                                                  !_passwordObscure;
+                                              _visibility = _passwordObscure
+                                                  ? Icon(Icons
+                                                      .remove_red_eye_outlined)
+                                                  : Icon(Icons.remove_red_eye);
+                                            });
+                                          },
+                                          child: _visibility),
                                       labelText: 'PASSWORD',
                                       labelStyle: TextStyle(
                                           color: Colors.black,

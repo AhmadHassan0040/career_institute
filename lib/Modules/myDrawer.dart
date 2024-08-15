@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:career_institute/Pages/Dashboard.dart';
-import 'package:career_institute/Pages/Leads_Form.dart';
+import 'package:career_institute/Pages/Lead%20Management/Create_Leads_Form.dart';
 import 'package:career_institute/Startup_initial_Pages/login-or-signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -85,9 +85,7 @@ class myDrawer extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12)),
                       child: ListTile(
                         onTap: () {
-                          Get.off(Dashboard(),
-                              transition: Transition.circularReveal,
-                              duration: Duration(milliseconds: 500));
+                          Get.offAll(Dashboard());
                         },
                         contentPadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
@@ -145,11 +143,7 @@ class myDrawer extends StatelessWidget {
                                   children: [
                                     ListTile(
                                       onTap: () {
-                                        Get.off(LeadForm(),
-                                            transition:
-                                                Transition.circularReveal,
-                                            duration:
-                                                Duration(milliseconds: 500));
+                                        Get.offAll(LeadForm());
                                       },
                                       leading: Icon(
                                         Icons.circle,
