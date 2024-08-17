@@ -57,17 +57,18 @@ class _LoginState extends State<Login> {
                             child: Text(
                               'LOGIN',
                               style: TextStyle(
+                                  fontStyle: FontStyle.italic,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 30),
+                                  fontSize: 40),
                             ),
                           ),
                         ),
                         Animate(
                           effects: [
                             MoveEffect(
-                                begin: Offset(25, 0),
-                                end: Offset(120, 0),
+                                begin: Offset(0, 0),
+                                end: Offset(100, 0),
                                 curve: Curves.easeInOut,
                                 delay: Duration(milliseconds: 500),
                                 duration: Duration(milliseconds: 1000))
@@ -143,6 +144,7 @@ class _LoginState extends State<Login> {
                                     if (!emailRegex.hasMatch(Value)) {
                                       return 'Please enter a valid email address.';
                                     }
+
                                     return null;
                                   },
                                 ),
