@@ -21,7 +21,18 @@ class Dashboard extends StatelessWidget {
         ),
       ),
       drawer: myDrawer(),
-      backgroundColor: Colors.white,
+      body: Container(
+        decoration: BoxDecoration(
+            gradient:
+                LinearGradient(colors: [Colors.blue, Colors.greenAccent])),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+          ),
+        ),
+      ),
     );
   }
 }
