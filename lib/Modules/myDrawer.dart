@@ -820,12 +820,12 @@ class myDrawer extends StatelessWidget {
                       child: ExpansionTile(
                         tilePadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
-                          'lib/images/Admission Management.jpeg',
+                          'lib/images/BatchTimeTable.jpeg',
                           width: 35,
                           height: 35,
                         ),
                         title: Text(
-                          'ADMISSION MANAGEMENT',
+                          'BATCH & TIME TABLE',
                           style: TextStyle(
                               fontSize: 14,
                               color: Colors.black,
@@ -833,12 +833,27 @@ class myDrawer extends StatelessWidget {
                         ),
                         children: [
                           ListTile(
+                            onTap: () {
+                              Get.offAll(LeadForm());
+                            },
                             leading: Icon(
                               Icons.circle,
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Today Admission'),
+                            title: Text('Create Batch'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Upcomming'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -863,7 +878,7 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Current Month Admission'),
+                            title: Text('Recently Started'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -888,7 +903,7 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Current Year Admission'),
+                            title: Text('In Progress'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -913,7 +928,107 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('All Admission'),
+                            title: Text('Recently Ended'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Completed'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Suspended Batches'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Batches'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Manage Time Table'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -946,12 +1061,12 @@ class myDrawer extends StatelessWidget {
                       child: ExpansionTile(
                         tilePadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
-                          'lib/images/Admission Management.jpeg',
+                          'lib/images/Programs.jpeg',
                           width: 35,
                           height: 35,
                         ),
                         title: Text(
-                          'ADMISSION MANAGEMENT',
+                          'PROGRAMMES',
                           style: TextStyle(
                               fontSize: 14,
                               color: Colors.black,
@@ -964,7 +1079,31 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Today Admission'),
+                            title: Text('Create Program'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Limit Management'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('On Going'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -989,7 +1128,7 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Current Month Admission'),
+                            title: Text('Suspended'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -1014,32 +1153,7 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Current Year Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('All Admission'),
+                            title: Text('All Programmes'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -1072,12 +1186,12 @@ class myDrawer extends StatelessWidget {
                       child: ExpansionTile(
                         tilePadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
-                          'lib/images/Admission Management.jpeg',
+                          'lib/images/Campuses.jpeg',
                           width: 35,
                           height: 35,
                         ),
                         title: Text(
-                          'ADMISSION MANAGEMENT',
+                          'CAMPUSES',
                           style: TextStyle(
                               fontSize: 14,
                               color: Colors.black,
@@ -1090,7 +1204,19 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Today Admission'),
+                            title: Text('Create Campuses'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Campuses'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -1115,57 +1241,7 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Current Month Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('Current Year Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('All Admission'),
+                            title: Text('Suspended'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -1198,12 +1274,12 @@ class myDrawer extends StatelessWidget {
                       child: ExpansionTile(
                         tilePadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
-                          'lib/images/Admission Management.jpeg',
+                          'lib/images/HumanResource.jpeg',
                           width: 35,
                           height: 35,
                         ),
                         title: Text(
-                          'ADMISSION MANAGEMENT',
+                          'HUMAN RESOURCE',
                           style: TextStyle(
                               fontSize: 14,
                               color: Colors.black,
@@ -1216,7 +1292,143 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Today Admission'),
+                            title: Text('Employees'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/FinanceManagement.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'FINANCE MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Add Expense'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Add Expense Type'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Utility Bills'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Payroll'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Supplier & Payee'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Expense'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/CertificateManagement.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'CERTIFICATE MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Pending For Approval'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -1241,7 +1453,7 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Current Month Admission'),
+                            title: Text('On Printing'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -1266,7 +1478,7 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Current Year Admission'),
+                            title: Text('Ready To Collect'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -1291,7 +1503,7 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('All Admission'),
+                            title: Text('Delivered'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
@@ -1324,12 +1536,12 @@ class myDrawer extends StatelessWidget {
                       child: ExpansionTile(
                         tilePadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
-                          'lib/images/Admission Management.jpeg',
+                          'lib/images/UserManagement.jpeg',
                           width: 35,
                           height: 35,
                         ),
                         title: Text(
-                          'ADMISSION MANAGEMENT',
+                          'USER MANAGEMENT',
                           style: TextStyle(
                               fontSize: 14,
                               color: Colors.black,
@@ -1342,24 +1554,11 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Today Admission'),
+                            title: Text('Add User'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
                           ),
                           ListTile(
                             leading: Icon(
@@ -1367,200 +1566,11 @@ class myDrawer extends StatelessWidget {
                               size: 10,
                               color: Colors.grey,
                             ),
-                            title: Text('Current Month Admission'),
+                            title: Text('Manage User'),
                             titleTextStyle: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('Current Year Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('All Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12)),
-                      child: ExpansionTile(
-                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
-                        leading: Image.asset(
-                          'lib/images/Admission Management.jpeg',
-                          width: 35,
-                          height: 35,
-                        ),
-                        title: Text(
-                          'ADMISSION MANAGEMENT',
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        children: [
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('Today Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('Current Month Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('Current Year Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.circle,
-                              size: 10,
-                              color: Colors.grey,
-                            ),
-                            title: Text('All Admission'),
-                            titleTextStyle: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                            trailing: Container(
-                              width: 30,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  gradient: LinearGradient(
-                                      colors: [Colors.red, Colors.red])),
-                              child: Center(
-                                  child: Text(
-                                '99+',
-                                style: TextStyle(color: Colors.white),
-                              )),
-                            ),
                           ),
                         ],
                       ),
@@ -1579,12 +1589,12 @@ class myDrawer extends StatelessWidget {
                         },
                         contentPadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
-                          'lib/images/Dashboard.jpeg',
+                          'lib/images/Event Management.jpeg',
                           width: 35,
                           height: 35,
                         ),
                         title: Text(
-                          'DASHBOARD',
+                          'EVENT MANAGEMENT',
                           style: TextStyle(
                               fontSize: 14,
                               color: Colors.black,
@@ -1608,12 +1618,12 @@ class myDrawer extends StatelessWidget {
                         },
                         contentPadding: EdgeInsets.symmetric(horizontal: 25),
                         leading: Image.asset(
-                          'lib/images/Dashboard.jpeg',
+                          'lib/images/Marketing.jpeg',
                           width: 35,
                           height: 35,
                         ),
                         title: Text(
-                          'DASHBOARD',
+                          'MARKETING',
                           style: TextStyle(
                               fontSize: 14,
                               color: Colors.black,
