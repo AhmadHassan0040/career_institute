@@ -5,7 +5,9 @@ import 'package:career_institute/Pages/Dashboard.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -218,6 +220,74 @@ class _LoginState extends State<Login> {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 30),
+                              Text(
+                                'VISIT OUR SOCIAL MEDIA',
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          final url = Uri.parse(
+                                              'https://www.instagram.com/careerinstituteofficial/');
+                                          launchUrl(url,
+                                              mode: LaunchMode.inAppWebView);
+                                        },
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.instagram,
+                                          color: Colors.blue.shade900,
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          final url = Uri.parse(
+                                              'https://www.linkedin.com/company/careerinstituteofficial/');
+                                          launchUrl(url,
+                                              mode: LaunchMode.inAppWebView);
+                                        },
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.linkedinIn,
+                                          color: Colors.blue.shade900,
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white),
+                                    child: IconButton(
+                                        onPressed: () {
+                                          final url = Uri.parse(
+                                              'https://www.facebook.com/careerinstituteofficial/');
+                                          launchUrl(url,
+                                              mode: LaunchMode
+                                                  .externalApplication);
+                                        },
+                                        icon: FaIcon(
+                                          FontAwesomeIcons.facebookF,
+                                          color: Colors.blue.shade900,
+                                        )),
+                                  ),
+                                ],
+                              )
                             ],
                           ),
                         ),

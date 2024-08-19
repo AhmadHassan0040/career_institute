@@ -395,6 +395,1465 @@ class myDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/RegistrationManagement.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'REGISTRATION MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Today Registrations'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Month Registrations'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Year Registrations'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Registrations'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Admission Management.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'ADMISSION MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Today Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Month Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Year Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Student Management.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'STUDENT MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Student'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Attendance'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Freeze Students'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Concluded Students'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Not Completed'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Suspended Students'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Admission Management.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'ADMISSION MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Today Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Month Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Year Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Admission Management.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'ADMISSION MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Today Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Month Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Year Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Admission Management.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'ADMISSION MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Today Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Month Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Year Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Admission Management.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'ADMISSION MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Today Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Month Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Year Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Admission Management.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'ADMISSION MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Today Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Month Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Year Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Admission Management.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'ADMISSION MANAGEMENT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Today Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Month Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Current Year Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('All Admission'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ListTile(
+                        onTap: () {
+                          Get.offAll(Dashboard());
+                        },
+                        contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Dashboard.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'DASHBOARD',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ListTile(
+                        onTap: () {
+                          Get.offAll(Dashboard());
+                        },
+                        contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Dashboard.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'DASHBOARD',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ExpansionTile(
+                        tilePadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Report.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'REPORT',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        children: [
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Daily Business Report'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Daily Closing Report'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Activity Report'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Admission Report'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Recovery Report'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.circle,
+                              size: 10,
+                              color: Colors.grey,
+                            ),
+                            title: Text('Manage Event'),
+                            titleTextStyle: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                            trailing: Container(
+                              width: 30,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  gradient: LinearGradient(
+                                      colors: [Colors.red, Colors.red])),
+                              child: Center(
+                                  child: Text(
+                                '99+',
+                                style: TextStyle(color: Colors.white),
+                              )),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ListTile(
+                        onTap: () {
+                          Get.offAll(Dashboard());
+                        },
+                        contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Website.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'WEBSITE',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: ListTile(
+                        onTap: () {
+                          Get.offAll(Dashboard());
+                        },
+                        contentPadding: EdgeInsets.symmetric(horizontal: 25),
+                        leading: Image.asset(
+                          'lib/images/Website panel.jpeg',
+                          width: 35,
+                          height: 35,
+                        ),
+                        title: Text(
+                          'WEBSITE ADMIN PANEL',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

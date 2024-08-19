@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:career_institute/Startup_initial_Pages/login-or-signup.dart';
+import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Navigate to the main screen after a delay
     Future.delayed(Duration(seconds: 3), () {
-      Get.off(Log_init(),
+      Get.off(Login(),
           transition: Transition.fade, duration: Duration(seconds: 1));
     });
   }
