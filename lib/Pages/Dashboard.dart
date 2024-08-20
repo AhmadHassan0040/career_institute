@@ -1,5 +1,7 @@
 import 'package:career_institute/Modules/myDrawer.dart';
+import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -14,6 +16,13 @@ class Dashboard extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.offAll(Login(), transition: Transition.rightToLeftWithFade);
+              },
+              icon: Icon(Icons.logout))
+        ],
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient:

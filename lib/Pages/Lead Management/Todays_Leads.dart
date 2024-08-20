@@ -3,8 +3,8 @@ import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Not_Interested extends StatelessWidget {
-  const Not_Interested({super.key});
+class Todays_Lead extends StatelessWidget {
+  const Todays_Lead({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class Not_Interested extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: Colors.white,
         title: Text(
-          'NOT INTERESTED',
+          'TODAY\'S LEAD',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

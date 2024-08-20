@@ -2,6 +2,7 @@
 
 import 'package:career_institute/DataHandling/Data.dart';
 import 'package:career_institute/Modules/myDrawer.dart';
+import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,6 +24,13 @@ class _LeadFormState extends State<LeadForm> {
       backgroundColor: Colors.blue.shade900,
       drawer: myDrawer(),
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.offAll(Login(), transition: Transition.rightToLeftWithFade);
+              },
+              icon: Icon(Icons.logout))
+        ],
         foregroundColor: Colors.white,
         centerTitle: true,
         title: Text(

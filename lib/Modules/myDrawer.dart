@@ -1,7 +1,16 @@
 // ignore_for_file: prefer_const_constructors, must_be_immutable
 
 import 'package:career_institute/Pages/Dashboard.dart';
+import 'package:career_institute/Pages/Lead%20Management/All_Leads.dart';
 import 'package:career_institute/Pages/Lead%20Management/Create_Leads_Form.dart';
+import 'package:career_institute/Pages/Lead%20Management/Lead_Follow_UP.dart';
+import 'package:career_institute/Pages/Lead%20Management/Leads_in_Pipeline.dart';
+import 'package:career_institute/Pages/Lead%20Management/Not_Interested.dart';
+import 'package:career_institute/Pages/Lead%20Management/Successfully_Enrolled.dart';
+import 'package:career_institute/Pages/Lead%20Management/Successfully_Registered.dart';
+import 'package:career_institute/Pages/Lead%20Management/Todays_Leads.dart';
+import 'package:career_institute/Pages/Lead%20Management/Transferred_Leads.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +33,7 @@ class myDrawer extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  SizedBox(height: 80),
+                  SizedBox(height: 100),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ListTile(
@@ -70,7 +79,8 @@ class myDrawer extends StatelessWidget {
                       children: [
                         ListTile(
                           onTap: () {
-                            Get.offAll(LeadForm());
+                            Get.offAll(LeadForm(),
+                                transition: Transition.rightToLeftWithFade);
                           },
                           leading: Icon(
                             Icons.circle,
@@ -84,7 +94,10 @@ class myDrawer extends StatelessWidget {
                               color: Colors.black),
                         ),
                         ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            Get.offAll(Lead_Follow_UP(),
+                                transition: Transition.rightToLeftWithFade);
+                          },
                           leading: Icon(
                             Icons.circle,
                             size: 10,
@@ -110,56 +123,10 @@ class myDrawer extends StatelessWidget {
                           ),
                         ),
                         ListTile(
-                          leading: Icon(
-                            Icons.circle,
-                            size: 10,
-                            color: Colors.grey,
-                          ),
-                          title: Text('Website Leads'),
-                          titleTextStyle: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          trailing: Container(
-                            width: 30,
-                            height: 20,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                gradient: LinearGradient(
-                                    colors: [Colors.red, Colors.red])),
-                            child: Center(
-                                child: Text(
-                              '99+',
-                              style: TextStyle(color: Colors.white),
-                            )),
-                          ),
-                        ),
-                        ListTile(
-                          leading: Icon(
-                            Icons.circle,
-                            size: 10,
-                            color: Colors.grey,
-                          ),
-                          title: Text('Bulk Leads'),
-                          titleTextStyle: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          trailing: Container(
-                            width: 30,
-                            height: 20,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                gradient: LinearGradient(
-                                    colors: [Colors.red, Colors.red])),
-                            child: Center(
-                                child: Text(
-                              '99+',
-                              style: TextStyle(color: Colors.white),
-                            )),
-                          ),
-                        ),
-                        ListTile(
+                          onTap: () {
+                            Get.offAll(Todays_Lead(),
+                                transition: Transition.rightToLeftWithFade);
+                          },
                           leading: Icon(
                             Icons.circle,
                             size: 10,
@@ -185,6 +152,10 @@ class myDrawer extends StatelessWidget {
                           ),
                         ),
                         ListTile(
+                          onTap: () {
+                            Get.offAll(Successfully_Registered(),
+                                transition: Transition.rightToLeftWithFade);
+                          },
                           leading: Icon(
                             Icons.circle,
                             size: 10,
@@ -210,6 +181,10 @@ class myDrawer extends StatelessWidget {
                           ),
                         ),
                         ListTile(
+                          onTap: () {
+                            Get.offAll(Successfully_Enrolled(),
+                                transition: Transition.rightToLeftWithFade);
+                          },
                           leading: Icon(
                             Icons.circle,
                             size: 10,
@@ -235,6 +210,10 @@ class myDrawer extends StatelessWidget {
                           ),
                         ),
                         ListTile(
+                          onTap: () {
+                            Get.offAll(Not_Interested(),
+                                transition: Transition.rightToLeftWithFade);
+                          },
                           leading: Icon(
                             Icons.circle,
                             size: 10,
@@ -260,6 +239,10 @@ class myDrawer extends StatelessWidget {
                           ),
                         ),
                         ListTile(
+                          onTap: () {
+                            Get.offAll(Transferred_Leads(),
+                                transition: Transition.rightToLeftWithFade);
+                          },
                           leading: Icon(
                             Icons.circle,
                             size: 10,
@@ -285,6 +268,10 @@ class myDrawer extends StatelessWidget {
                           ),
                         ),
                         ListTile(
+                          onTap: () {
+                            Get.offAll(Leads_Pipeline(),
+                                transition: Transition.rightToLeftWithFade);
+                          },
                           leading: Icon(
                             Icons.circle,
                             size: 10,
@@ -310,6 +297,10 @@ class myDrawer extends StatelessWidget {
                           ),
                         ),
                         ListTile(
+                          onTap: () {
+                            Get.offAll(All_Leads(),
+                                transition: Transition.rightToLeftWithFade);
+                          },
                           leading: Icon(
                             Icons.circle,
                             size: 10,
@@ -1569,49 +1560,11 @@ class myDrawer extends StatelessWidget {
                             size: 10,
                             color: Colors.grey,
                           ),
-                          title: Text('Daily Business Report'),
-                          titleTextStyle: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          trailing: Container(
-                            width: 30,
-                            height: 20,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                gradient: LinearGradient(
-                                    colors: [Colors.red, Colors.red])),
-                            child: Center(
-                                child: Text(
-                              '99+',
-                              style: TextStyle(color: Colors.white),
-                            )),
-                          ),
-                        ),
-                        ListTile(
-                          leading: Icon(
-                            Icons.circle,
-                            size: 10,
-                            color: Colors.grey,
-                          ),
                           title: Text('Daily Closing Report'),
                           titleTextStyle: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
-                          trailing: Container(
-                            width: 30,
-                            height: 20,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                gradient: LinearGradient(
-                                    colors: [Colors.red, Colors.red])),
-                            child: Center(
-                                child: Text(
-                              '99+',
-                              style: TextStyle(color: Colors.white),
-                            )),
-                          ),
                         ),
                         ListTile(
                           leading: Icon(
@@ -1775,16 +1728,14 @@ class myDrawer extends StatelessWidget {
                         spreadRadius: 4,
                         blurRadius: 10)
                   ],
-                  border: Border(
-                      bottom: BorderSide(color: Colors.white),
-                      top: BorderSide(color: Colors.white))),
+                  border: Border(bottom: BorderSide(color: Colors.white))),
               child: ExpansionTile(
                 expansionAnimationStyle: AnimationStyle(
                     duration: Duration(milliseconds: 300),
                     curve: Curves.easeInOut),
                 collapsedIconColor: Colors.white,
                 iconColor: Colors.white,
-                tilePadding: EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+                tilePadding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
                 leading: Container(
                   width: 80,
                   height: 80,
@@ -1807,7 +1758,7 @@ class myDrawer extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: 15, right: 10, top: 10, bottom: 10),
+                        left: 10, right: 10, top: 10, bottom: 10),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -1833,6 +1784,33 @@ class myDrawer extends StatelessWidget {
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(12),
                                     bottomLeft: Radius.circular(12))),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.yellow,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'lib/images/user-profile.png')),
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text('Adeel Javaid',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12)),
+                                Text('Super Admin',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 8)),
+                              ],
+                            ),
                           ),
                           Container(
                             width: 179,
@@ -1842,6 +1820,82 @@ class myDrawer extends StatelessWidget {
                                 borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(12),
                                     bottomRight: Radius.circular(12))),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'User Profile',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    children: [
+                                      Text('Email',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 10)),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text('hasan.hasanf80@gmail.com',
+                                            style: TextStyle(fontSize: 9)),
+                                      )
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Row(
+                                    children: [
+                                      Text('Campus',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 10)),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text('All',
+                                            style: TextStyle(fontSize: 9)),
+                                      )
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Row(
+                                    children: [
+                                      Text('Created At',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 10)),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text('2022-08-06 00:00:17',
+                                            style: TextStyle(fontSize: 9)),
+                                      )
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Row(
+                                    children: [
+                                      Text('Remarks',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 10)),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text('Updating Password to PPK',
+                                            style: TextStyle(fontSize: 8)),
+                                      )
+                                    ],
+                                  ),
+                                  Divider(),
+                                ],
+                              ),
+                            ),
                           )
                         ],
                       ),

@@ -13,6 +13,7 @@ void main() {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
+
   runApp(const MyApp());
 }
 
