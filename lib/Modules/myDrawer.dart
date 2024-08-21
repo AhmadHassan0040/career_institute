@@ -1720,8 +1720,7 @@ class myDrawer extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  gradient:
-                      LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
+                  color: Colors.blue.shade400,
                   boxShadow: [
                     BoxShadow(
                         color: Colors.grey.shade600,
