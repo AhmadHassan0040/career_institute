@@ -73,7 +73,7 @@ class _DashboardState extends State<Dashboard> {
                           getTooltipItems: (List<LineBarSpot> touchedSpots) {
                             return touchedSpots.map((spot) {
                               return LineTooltipItem(
-                                '${spot.y}',
+                                '${spot.y.toInt()}',
                                 const TextStyle(
                                   color: Colors.white, // Text color
                                   fontWeight: FontWeight.bold,
@@ -84,6 +84,18 @@ class _DashboardState extends State<Dashboard> {
                         )),
                         lineBarsData: [
                           LineChartBarData(
+                            belowBarData: BarAreaData(
+                              show: true,
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.blue.withOpacity(0.5), // Start color
+                                  Colors.greenAccent
+                                      .withOpacity(0.1), // End color
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                            ),
                             gradient: LinearGradient(
                                 colors: [Colors.blue, Colors.greenAccent]),
                             spots: [
@@ -97,7 +109,16 @@ class _DashboardState extends State<Dashboard> {
                             ],
                             isCurved: true,
                             barWidth: 3,
-                            dotData: FlDotData(show: true),
+                            isStrokeCapRound: true,
+                            dotData: FlDotData(
+                              show: true,
+                              getDotPainter: (spot, percent, barData, index) {
+                                return FlDotCirclePainter(
+                                  radius: 3,
+                                  color: Colors.white,
+                                );
+                              },
+                            ),
                           ),
                           LineChartBarData(
                             spots: [FlSpot(-1, 0), FlSpot(7, 0)],
@@ -235,7 +256,7 @@ class _DashboardState extends State<Dashboard> {
                                   borderRadius: BorderRadius.circular(12)),
                               child: Center(
                                 child: DropdownButton<String>(
-                                  value: selectedPeriod! + '',
+                                  value: selectedPeriod!,
                                   style: TextStyle(color: Colors.white),
                                   dropdownColor: Colors.grey.shade900,
                                   borderRadius: BorderRadius.circular(8),
