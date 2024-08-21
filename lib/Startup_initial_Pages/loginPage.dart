@@ -197,7 +197,7 @@ class _LoginState extends State<Login> {
                                             'hasan.hasanf80@gmail.com' &&
                                         formData.passController.text ==
                                             '11111111') {
-                                      Get.offAll(Dashboard(),
+                                      Get.offAll(() => Dashboard(),
                                           transition:
                                               Transition.rightToLeftWithFade,
                                           duration: Duration(seconds: 1));
