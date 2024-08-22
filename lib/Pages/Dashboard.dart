@@ -148,68 +148,65 @@ class _DashboardState extends State<Dashboard> {
                     }),
               ),
               Container(
+                  alignment: Alignment.center,
+                  height: 100,
                   color: Colors.blueGrey.shade900,
-                  child: Column(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            ShaderMask(
-                              shaderCallback: (bounds) => LinearGradient(
-                                      colors: [Colors.blue, Colors.greenAccent])
-                                  .createShader(bounds),
-                              child: Text('Registration',
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25.0),
-                              child: Text('1200000',
-                                  style: TextStyle(color: Colors.white)),
-                            )
-                          ],
-                        ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ShaderMask(
+                            shaderCallback: (bounds) => LinearGradient(
+                                    colors: [Colors.blue, Colors.greenAccent])
+                                .createShader(bounds),
+                            child: Text('Registration',
+                                style: TextStyle(color: Colors.white)),
+                          ),
+                          Text('1200000',
+                              style: TextStyle(color: Colors.white)),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            ShaderMask(
-                              shaderCallback: (bounds) => LinearGradient(
-                                      colors: [Colors.blue, Colors.greenAccent])
-                                  .createShader(bounds),
-                              child: Text('Admission',
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 30.0),
-                              child: Text('1600000',
-                                  style: TextStyle(color: Colors.white)),
-                            )
-                          ],
-                        ),
+                      Container(
+                        width: 0.5,
+                        height: 15,
+                        color: Colors.white,
+                        margin: EdgeInsets.only(left: 15, right: 30),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 35.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            ShaderMask(
-                              shaderCallback: (bounds) => LinearGradient(
-                                      colors: [Colors.blue, Colors.greenAccent])
-                                  .createShader(bounds),
-                              child: Text('Recovery',
-                                  style: TextStyle(color: Colors.white)),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 35.0),
-                              child: Text('1801000',
-                                  style: TextStyle(color: Colors.white)),
-                            )
-                          ],
-                        ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ShaderMask(
+                            shaderCallback: (bounds) => LinearGradient(
+                                    colors: [Colors.blue, Colors.greenAccent])
+                                .createShader(bounds),
+                            child: Text('Admission',
+                                style: TextStyle(color: Colors.white)),
+                          ),
+                          Text('1600000',
+                              style: TextStyle(color: Colors.white)),
+                        ],
+                      ),
+                      Container(
+                        width: 0.5,
+                        height: 15,
+                        color: Colors.white,
+                        margin: EdgeInsets.only(left: 30, right: 35),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ShaderMask(
+                            shaderCallback: (bounds) => LinearGradient(
+                                    colors: [Colors.blue, Colors.greenAccent])
+                                .createShader(bounds),
+                            child: Text('Recovery',
+                                style: TextStyle(color: Colors.white)),
+                          ),
+                          Text('1801000',
+                              style: TextStyle(color: Colors.white)),
+                        ],
                       ),
                     ],
                   ))
@@ -267,10 +264,17 @@ class _DashboardState extends State<Dashboard> {
           LineChartBarData(
             belowBarData: BarAreaData(
                 show: true,
-                gradient: LinearGradient(colors: [
-                  Colors.blue.withOpacity(0.2),
-                  Colors.greenAccent.withOpacity(0.2)
-                ])),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.greenAccent.withOpacity(0.2),
+                    Colors.greenAccent.withOpacity(0.15),
+                    Colors.greenAccent.withOpacity(0.1),
+                    Colors.greenAccent.withOpacity(0.05),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
             gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
               FlSpot(-1, mon.toDouble()),
@@ -430,10 +434,17 @@ class _DashboardState extends State<Dashboard> {
           LineChartBarData(
             belowBarData: BarAreaData(
                 show: true,
-                gradient: LinearGradient(colors: [
-                  Colors.blue.withOpacity(0.2),
-                  Colors.greenAccent.withOpacity(0.2)
-                ])),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.greenAccent.withOpacity(0.2),
+                    Colors.greenAccent.withOpacity(0.15),
+                    Colors.greenAccent.withOpacity(0.1),
+                    Colors.greenAccent.withOpacity(0.05),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
             gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
               FlSpot(-1, week1.toDouble()),
@@ -566,10 +577,17 @@ class _DashboardState extends State<Dashboard> {
           LineChartBarData(
             belowBarData: BarAreaData(
                 show: true,
-                gradient: LinearGradient(colors: [
-                  Colors.blue.withOpacity(0.2),
-                  Colors.greenAccent.withOpacity(0.2)
-                ])),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.greenAccent.withOpacity(0.2),
+                    Colors.greenAccent.withOpacity(0.15),
+                    Colors.greenAccent.withOpacity(0.1),
+                    Colors.greenAccent.withOpacity(0.05),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
             gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
               FlSpot(-1, jan.toDouble()),
