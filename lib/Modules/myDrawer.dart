@@ -61,9 +61,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/Lead Management.jpeg',
@@ -333,9 +332,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/RegistrationManagement.jpeg',
@@ -457,9 +455,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/Admission Management.jpeg',
@@ -581,9 +578,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/Student Management.jpeg',
@@ -742,9 +738,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/BatchTimeTable.jpeg',
@@ -981,9 +976,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/Programs.jpeg',
@@ -1104,9 +1098,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/Campuses.jpeg',
@@ -1190,9 +1183,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/HumanResource.jpeg',
@@ -1226,9 +1218,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/FinanceManagement.jpeg',
@@ -1322,9 +1313,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/CertificateManagement.jpeg',
@@ -1446,9 +1436,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/UserManagement.jpeg',
@@ -1538,9 +1527,8 @@ class myDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 0.0),
                     child: ExpansionTile(
-                      expansionAnimationStyle: AnimationStyle(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeInOut),
+                      expansionAnimationStyle:
+                          AnimationStyle(curve: Curves.easeInOut),
                       tilePadding: EdgeInsets.symmetric(horizontal: 25),
                       leading: Image.asset(
                         'lib/images/Report.jpeg',
@@ -1720,7 +1708,7 @@ class myDrawer extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Colors.blue.shade400,
+                  color: Colors.blueGrey.shade900,
                   boxShadow: [
                     BoxShadow(
                         color: Colors.grey.shade600,
@@ -1730,9 +1718,8 @@ class myDrawer extends StatelessWidget {
                   ],
                   border: Border(bottom: BorderSide(color: Colors.white))),
               child: ExpansionTile(
-                expansionAnimationStyle: AnimationStyle(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeInOut),
+                expansionAnimationStyle:
+                    AnimationStyle(curve: Curves.easeInOut),
                 collapsedIconColor: Colors.white,
                 iconColor: Colors.white,
                 tilePadding: EdgeInsets.symmetric(horizontal: 25, vertical: 30),
@@ -1913,11 +1900,16 @@ class myDrawer extends StatelessWidget {
                       child: Container(
                         height: 50,
                         decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 26, 112, 183),
+                            gradient: LinearGradient(
+                                begin: Alignment(0, 0.2),
+                                colors: [
+                                  Color.fromARGB(255, 33, 51, 243),
+                                  Color.fromARGB(255, 13, 30, 161)
+                                ]),
                             borderRadius: BorderRadius.circular(12),
                             boxShadow: [
                               BoxShadow(
-                                color: Color.fromARGB(255, 8, 41, 90),
+                                color: Colors.grey.shade600,
                                 spreadRadius: 1,
                                 blurRadius: 2,
                               )

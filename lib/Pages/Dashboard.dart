@@ -61,7 +61,7 @@ class _DashboardState extends State<Dashboard> {
               },
               icon: Icon(Icons.logout))
         ],
-        backgroundColor: Color.fromARGB(255, 0, 122, 222),
+        backgroundColor: Colors.blueGrey.shade900,
       ),
       drawer: myDrawer(),
       body: Container(
@@ -71,7 +71,7 @@ class _DashboardState extends State<Dashboard> {
             children: [
               Container(
                 height: 70,
-                color: Color.fromARGB(255, 0, 122, 222),
+                color: Colors.blueGrey.shade900,
                 child: Center(
                   child: Column(
                     children: [
@@ -82,11 +82,16 @@ class _DashboardState extends State<Dashboard> {
                             fontWeight: FontWeight.bold,
                             fontSize: 10),
                       ),
-                      Text('\$1500',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25)),
+                      ShaderMask(
+                        shaderCallback: (bounds) => LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent])
+                            .createShader(bounds),
+                        child: Text('\$1500',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25)),
+                      ),
                       Text(
                         'TOTAL INCOME THIS MONTH',
                         style: TextStyle(color: Colors.white, fontSize: 12),
@@ -98,34 +103,40 @@ class _DashboardState extends State<Dashboard> {
               Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 0, 122, 222),
+                    color: Colors.blueGrey.shade900,
                   ),
                   child: _buildGraph()),
               Container(
-                color: Color.fromARGB(255, 59, 153, 231),
+                color: Colors.blueGrey.shade900,
                 child: CupertinoSlidingSegmentedControl(
-                    thumbColor: Colors.blue.shade800,
+                    thumbColor: Colors.white,
                     backgroundColor: Colors.transparent,
                     children: {
                       'WEEKLY GRAPH': Text(
                         'WEEKLY',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: _selectedPeriod == 'WEEKLY GRAPH'
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                       'MONTHLY GRAPH': Text(
                         'MONTHLY',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: _selectedPeriod == 'MONTHLY GRAPH'
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                       'YEARLY GRAPH': Text(
                         'YEARLY',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: _selectedPeriod == 'YEARLY GRAPH'
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                     },
@@ -227,7 +238,7 @@ class _DashboardState extends State<Dashboard> {
       LineChartData(
         gridData: FlGridData(
           drawVerticalLine: false,
-          horizontalInterval: 40,
+          horizontalInterval: 42,
           getDrawingHorizontalLine: (value) {
             return FlLine(
               color: Colors.white24,
@@ -236,7 +247,7 @@ class _DashboardState extends State<Dashboard> {
           },
         ),
         borderData: FlBorderData(show: false),
-        backgroundColor: Color.fromARGB(255, 0, 122, 222),
+        backgroundColor: Colors.blueGrey.shade900,
         minY: 0,
         maxY: 300,
         lineTouchData: LineTouchData(touchTooltipData: LineTouchTooltipData(
@@ -245,7 +256,7 @@ class _DashboardState extends State<Dashboard> {
               return LineTooltipItem(
                 '${spot.y.toInt()}',
                 const TextStyle(
-                  color: Colors.white, // Text color
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               );
@@ -254,8 +265,13 @@ class _DashboardState extends State<Dashboard> {
         )),
         lineBarsData: [
           LineChartBarData(
-            belowBarData: BarAreaData(show: true, color: Colors.white24),
-            color: Colors.white,
+            belowBarData: BarAreaData(
+                show: true,
+                gradient: LinearGradient(colors: [
+                  Colors.blue.withOpacity(0.2),
+                  Colors.greenAccent.withOpacity(0.2)
+                ])),
+            gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
               FlSpot(-1, mon.toDouble()),
               FlSpot(0, mon.toDouble()),
@@ -274,8 +290,8 @@ class _DashboardState extends State<Dashboard> {
               show: true,
               getDotPainter: (spot, percent, barData, index) {
                 return FlDotCirclePainter(
-                  radius: 3,
-                  color: Colors.white38,
+                  radius: 2,
+                  color: Colors.white,
                 );
               },
             ),
@@ -385,7 +401,7 @@ class _DashboardState extends State<Dashboard> {
       LineChartData(
         gridData: FlGridData(
           drawVerticalLine: false,
-          horizontalInterval: 40,
+          horizontalInterval: 42,
           getDrawingHorizontalLine: (value) {
             return FlLine(
               color: Colors.white24,
@@ -394,7 +410,7 @@ class _DashboardState extends State<Dashboard> {
           },
         ),
         borderData: FlBorderData(show: false),
-        backgroundColor: Color.fromARGB(255, 0, 122, 222),
+        backgroundColor: Colors.blueGrey.shade900,
         minY: 0,
         maxY: 300,
         lineTouchData: LineTouchData(touchTooltipData: LineTouchTooltipData(
@@ -412,8 +428,13 @@ class _DashboardState extends State<Dashboard> {
         )),
         lineBarsData: [
           LineChartBarData(
-            belowBarData: BarAreaData(show: true, color: Colors.white24),
-            color: Colors.white,
+            belowBarData: BarAreaData(
+                show: true,
+                gradient: LinearGradient(colors: [
+                  Colors.blue.withOpacity(0.2),
+                  Colors.greenAccent.withOpacity(0.2)
+                ])),
+            gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
               FlSpot(-1, week1.toDouble()),
               FlSpot(0, week1.toDouble()),
@@ -429,8 +450,8 @@ class _DashboardState extends State<Dashboard> {
               show: true,
               getDotPainter: (spot, percent, barData, index) {
                 return FlDotCirclePainter(
-                  radius: 3,
-                  color: Colors.white38,
+                  radius: 2,
+                  color: Colors.white,
                 );
               },
             ),
@@ -516,7 +537,7 @@ class _DashboardState extends State<Dashboard> {
       LineChartData(
         gridData: FlGridData(
           drawVerticalLine: false,
-          horizontalInterval: 40,
+          horizontalInterval: 42,
           getDrawingHorizontalLine: (value) {
             return FlLine(
               color: Colors.white24,
@@ -525,7 +546,7 @@ class _DashboardState extends State<Dashboard> {
           },
         ),
         borderData: FlBorderData(show: false),
-        backgroundColor: Color.fromARGB(255, 0, 122, 222),
+        backgroundColor: Colors.blueGrey.shade900,
         minY: 0,
         maxY: 300,
         lineTouchData: LineTouchData(touchTooltipData: LineTouchTooltipData(
@@ -543,8 +564,13 @@ class _DashboardState extends State<Dashboard> {
         )),
         lineBarsData: [
           LineChartBarData(
-            belowBarData: BarAreaData(show: true, color: Colors.white24),
-            color: Colors.white,
+            belowBarData: BarAreaData(
+                show: true,
+                gradient: LinearGradient(colors: [
+                  Colors.blue.withOpacity(0.2),
+                  Colors.greenAccent.withOpacity(0.2)
+                ])),
+            gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
               FlSpot(-1, jan.toDouble()),
               FlSpot(0, jan.toDouble()),
@@ -568,8 +594,8 @@ class _DashboardState extends State<Dashboard> {
               show: true,
               getDotPainter: (spot, percent, barData, index) {
                 return FlDotCirclePainter(
-                  radius: 3,
-                  color: Colors.white38,
+                  radius: 2,
+                  color: Colors.white,
                 );
               },
             ),
