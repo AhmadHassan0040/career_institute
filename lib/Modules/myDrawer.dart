@@ -51,7 +51,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'DASHBOARD',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -72,7 +72,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'LEAD MANAGEMENT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -89,7 +89,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Create New Lead'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -105,7 +106,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Lead\'s Follow-UP'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -134,7 +136,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Today\'s Leads'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -163,7 +166,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Successfully Registered'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -192,7 +196,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Successfully Enrolled'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -221,7 +226,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Not Interested'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -250,7 +256,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Transferred Leads'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -279,7 +286,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Leads in Pipeline'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -308,7 +316,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('All Leads'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -343,7 +352,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'REGISTRATION MANAGEMENT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -356,7 +365,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Today Registrations'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -381,7 +391,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Current Month Registrations'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -406,7 +417,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Current Year Registrations'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -431,7 +443,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('All Registrations'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -466,7 +479,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'ADMISSION MANAGEMENT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -479,7 +492,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Today Admission'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -504,7 +518,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Current Month Admission'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -529,7 +544,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Current Year Admission'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -554,7 +570,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('All Admission'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -589,7 +606,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'STUDENT MANAGEMENT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -602,7 +619,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Current Student'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -627,7 +645,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Attendance'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -639,7 +658,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Freeze Students'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -664,7 +684,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Concluded Students'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -689,7 +710,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Not Completed'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -714,7 +736,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Suspended Students'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -749,7 +772,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'BATCH & TIME TABLE',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -765,7 +788,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Create Batch'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -777,7 +801,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Upcomming'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -802,7 +827,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Recently Started'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -827,7 +853,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('In Progress'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -852,7 +879,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Recently Ended'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -877,7 +905,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Completed'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -902,7 +931,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Suspended Batches'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -927,7 +957,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('All Batches'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -952,7 +983,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Manage Time Table'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -987,7 +1019,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'PROGRAMMES',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1000,7 +1032,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Create Program'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1012,7 +1045,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Limit Management'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1024,7 +1058,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('On Going'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1049,7 +1084,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Suspended'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1074,7 +1110,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('All Programmes'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1109,7 +1146,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'CAMPUSES',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1122,7 +1159,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Create Campuses'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1134,7 +1172,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('All Campuses'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1159,7 +1198,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Suspended'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1194,7 +1234,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'HUMAN RESOURCE',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1207,7 +1247,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Employees'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1229,7 +1270,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'FINANCE MANAGEMENT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1242,7 +1283,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Add Expense'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1254,7 +1296,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Add Expense Type'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1266,7 +1309,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Utility Bills'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1278,7 +1322,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Payroll'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1290,7 +1335,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Supplier & Payee'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1302,7 +1348,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('All Expense'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1324,7 +1371,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'CERTIFICATE MANAGEMENT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1337,7 +1384,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Pending For Approval'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1362,7 +1410,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('On Printing'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1387,7 +1436,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Ready To Collect'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1412,7 +1462,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Delivered'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1447,7 +1498,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'USER MANAGEMENT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1460,7 +1511,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Add User'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1472,7 +1524,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Manage User'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1495,7 +1548,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'EVENT MANAGEMENT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1517,7 +1570,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'MARKETING',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1538,7 +1591,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'REPORT',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1551,7 +1604,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Daily Closing Report'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                         ),
@@ -1563,7 +1617,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Activity Report'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1588,7 +1643,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Admission Report'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1613,7 +1669,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Recovery Report'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1638,7 +1695,8 @@ class myDrawer extends StatelessWidget {
                           ),
                           title: Text('Manage Event'),
                           titleTextStyle: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontFamily: 'Rajdhani',
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
                           trailing: Container(
@@ -1674,7 +1732,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'WEBSITE',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1696,7 +1754,7 @@ class myDrawer extends StatelessWidget {
                       title: Text(
                         'WEBSITE ADMIN PANEL',
                         style: TextStyle(
-                            fontSize: 11,
+                            fontSize: 13,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1740,7 +1798,7 @@ class myDrawer extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 15),
+                      fontSize: 20),
                 ),
                 children: [
                   Padding(

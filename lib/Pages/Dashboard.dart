@@ -65,7 +65,7 @@ class _DashboardState extends State<Dashboard> {
       ),
       drawer: myDrawer(),
       body: Container(
-        color: Colors.white,
+        color: Colors.blueGrey.shade900,
         child: Center(
           child: ListView(
             children: [
