@@ -3,6 +3,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+class DashboardData extends GetxController {
+  String selectedPeriod = 'WEEKLY GRAPH';
+
+  int monthlyIncome = 1500;
+
+  //Weekly
+  int mon = 130;
+  int tue = 130;
+  int wed = 180;
+  int thu = 175;
+  int fri = 200;
+  int sat = 170;
+  int sun = 250;
+
+  //Monthly
+  int week1 = 150;
+  int week2 = 175;
+  int week3 = 190;
+  int week4 = 220;
+
+  //Yearly
+  int jan = 120;
+  int feb = 140;
+  int mar = 180;
+  int apr = 170;
+  int may = 200;
+  int jun = 220;
+  int jul = 250;
+  int aug = 190;
+  int sep = 230;
+  int oct = 210;
+  int nov = 180;
+  int dec = 240;
+}
+
 class LoginData extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();

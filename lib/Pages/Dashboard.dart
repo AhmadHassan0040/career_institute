@@ -1,3 +1,4 @@
+import 'package:career_institute/DataHandling/Data.dart';
 import 'package:career_institute/Modules/myDrawer.dart';
 import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -13,42 +14,20 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  String _selectedPeriod = 'WEEKLY GRAPH';
+  DashboardData dashboardData = DashboardData();
 
-  //Weekly
-  int mon = 130;
-  int tue = 130;
-  int wed = 180;
-  int thu = 175;
-  int fri = 200;
-  int sat = 170;
-  int sun = 250;
-
-  //Monthly
-  int week1 = 150;
-  int week2 = 175;
-  int week3 = 190;
-  int week4 = 220;
-
-  //Yearly
-  int jan = 120;
-  int feb = 140;
-  int mar = 180;
-  int apr = 170;
-  int may = 200;
-  int jun = 220;
-  int jul = 250;
-  int aug = 190;
-  int sep = 230;
-  int oct = 210;
-  int nov = 180;
-  int dec = 240;
+  Future<void> _pageRefresh() async {
+    setState(() {
+      Get.offAll(() => Dashboard(), transition: Transition.fadeIn);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
+        flexibleSpace: Container(color: Colors.blueGrey.shade900),
         title: Text(
           'DASHBOARD',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -61,156 +40,812 @@ class _DashboardState extends State<Dashboard> {
               },
               icon: Icon(Icons.logout))
         ],
-        backgroundColor: Colors.blueGrey.shade900,
       ),
       drawer: myDrawer(),
       body: Container(
         color: Colors.blueGrey.shade900,
         child: Center(
-          child: ListView(
-            children: [
-              Container(
-                height: 70,
-                color: Colors.blueGrey.shade900,
-                child: Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        _selectedPeriod,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10),
-                      ),
-                      ShaderMask(
-                        shaderCallback: (bounds) => LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent])
-                            .createShader(bounds),
-                        child: Text('\$1500',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25)),
-                      ),
-                      Text(
-                        'TOTAL INCOME THIS MONTH',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ],
+          child: RefreshIndicator(
+            backgroundColor: Colors.blueGrey.shade900,
+            color: Colors.greenAccent,
+            onRefresh: _pageRefresh,
+            child: ListView(
+              children: [
+                Container(
+                  height: 70,
+                  color: Colors.blueGrey.shade900,
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Text(
+                          dashboardData.selectedPeriod,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10),
+                        ),
+                        ShaderMask(
+                          shaderCallback: (bounds) => LinearGradient(
+                                  colors: [Colors.blue, Colors.greenAccent])
+                              .createShader(bounds),
+                          child: Text('\$${dashboardData.monthlyIncome}',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25)),
+                        ),
+                        Text(
+                          'TOTAL INCOME THIS MONTH',
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey.shade900,
-                  ),
-                  child: _buildGraph()),
-              Container(
-                color: Colors.blueGrey.shade900,
-                child: CupertinoSlidingSegmentedControl(
-                    thumbColor: Colors.white,
-                    backgroundColor: Colors.transparent,
-                    children: {
-                      'WEEKLY GRAPH': Text(
-                        'WEEKLY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: _selectedPeriod == 'WEEKLY GRAPH'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                      'MONTHLY GRAPH': Text(
-                        'MONTHLY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: _selectedPeriod == 'MONTHLY GRAPH'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                      'YEARLY GRAPH': Text(
-                        'YEARLY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: _selectedPeriod == 'YEARLY GRAPH'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                    },
-                    groupValue: _selectedPeriod,
-                    onValueChanged: (String? newValue) {
-                      setState(() {
-                        _selectedPeriod = newValue!;
-                      });
-                    }),
-              ),
-              Container(
-                  alignment: Alignment.center,
-                  height: 100,
+                Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey.shade900,
+                    ),
+                    child: _buildGraph()),
+                Container(
                   color: Colors.blueGrey.shade900,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text('Registration',
-                                style: TextStyle(color: Colors.white)),
+                  child: CupertinoSlidingSegmentedControl(
+                      thumbColor: Colors.white,
+                      backgroundColor: Colors.transparent,
+                      children: {
+                        'WEEKLY GRAPH': Text(
+                          'WEEKLY',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color:
+                                dashboardData.selectedPeriod == 'WEEKLY GRAPH'
+                                    ? Colors.black
+                                    : Colors.white,
                           ),
-                          Text('1200000',
-                              style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
+                        ),
+                        'MONTHLY GRAPH': Text(
+                          'MONTHLY',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color:
+                                dashboardData.selectedPeriod == 'MONTHLY GRAPH'
+                                    ? Colors.black
+                                    : Colors.white,
+                          ),
+                        ),
+                        'YEARLY GRAPH': Text(
+                          'YEARLY',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color:
+                                dashboardData.selectedPeriod == 'YEARLY GRAPH'
+                                    ? Colors.black
+                                    : Colors.white,
+                          ),
+                        ),
+                      },
+                      groupValue: dashboardData.selectedPeriod,
+                      onValueChanged: (String? newValue) {
+                        setState(() {
+                          dashboardData.selectedPeriod = newValue!;
+                        });
+                      }),
+                ),
+                Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    color: Colors.blueGrey.shade900,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ShaderMask(
+                              shaderCallback: (bounds) => LinearGradient(
+                                      colors: [Colors.blue, Colors.greenAccent])
+                                  .createShader(bounds),
+                              child: Text('Registration',
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                            Text('1200000',
+                                style: TextStyle(color: Colors.white)),
+                          ],
+                        ),
+                        Container(
+                          width: 0.5,
+                          height: 15,
+                          color: Colors.white,
+                          margin: EdgeInsets.only(left: 15, right: 30),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ShaderMask(
+                              shaderCallback: (bounds) => LinearGradient(
+                                      colors: [Colors.blue, Colors.greenAccent])
+                                  .createShader(bounds),
+                              child: Text('Admission',
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                            Text('1600000',
+                                style: TextStyle(color: Colors.white)),
+                          ],
+                        ),
+                        Container(
+                          width: 0.5,
+                          height: 15,
+                          color: Colors.white,
+                          margin: EdgeInsets.only(left: 30, right: 35),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ShaderMask(
+                              shaderCallback: (bounds) => LinearGradient(
+                                      colors: [Colors.blue, Colors.greenAccent])
+                                  .createShader(bounds),
+                              child: Text('Recovery',
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                            Text('1801000',
+                                style: TextStyle(color: Colors.white)),
+                          ],
+                        ),
+                      ],
+                    )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Stack(alignment: Alignment.center, children: [
                       Container(
-                        width: 0.5,
-                        height: 15,
-                        color: Colors.white,
-                        margin: EdgeInsets.only(left: 15, right: 30),
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.yellow.shade600,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(0, 1),
+                                spreadRadius: 1,
+                                blurRadius: 4,
+                              )
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: LineChart(LineChartData(
+                              gridData: FlGridData(
+                                drawVerticalLine: true,
+                                horizontalInterval: 35,
+                                verticalInterval: 0.5,
+                                getDrawingHorizontalLine: (value) {
+                                  return FlLine(
+                                    color: Colors.white.withOpacity(0.2),
+                                    strokeWidth: 1,
+                                  );
+                                },
+                                getDrawingVerticalLine: (value) {
+                                  return FlLine(
+                                    color: Colors.white.withOpacity(0.2),
+                                    strokeWidth: 1,
+                                  );
+                                },
+                              ),
+                              borderData: FlBorderData(show: false),
+                              titlesData: FlTitlesData(
+                                topTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                leftTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                rightTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                              ),
+                              minY: 0,
+                              maxY: 300,
+                              lineBarsData: [
+                                LineChartBarData(
+                                    belowBarData: BarAreaData(
+                                        color: Colors.yellow.shade700,
+                                        show: true),
+                                    isCurved: false,
+                                    dotData: FlDotData(show: false),
+                                    color: Colors.yellow.shade700,
+                                    spots: [
+                                      FlSpot(0, 10),
+                                      FlSpot(1, 50),
+                                      FlSpot(3, 40),
+                                      FlSpot(4, 150),
+                                      FlSpot(5, 270),
+                                      FlSpot(6, 100),
+                                    ])
+                              ])),
+                        ),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text('Admission',
-                                style: TextStyle(color: Colors.white)),
+                          Text('0',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30)),
+                          Text('Today Leads',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(Icons.arrow_upward,
+                                  color: Colors.white, size: 20),
+                              Text('15%',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20)),
+                            ],
                           ),
-                          Text('1600000',
-                              style: TextStyle(color: Colors.white)),
                         ],
-                      ),
+                      )
+                    ]),
+                    Stack(alignment: Alignment.center, children: [
                       Container(
-                        width: 0.5,
-                        height: 15,
-                        color: Colors.white,
-                        margin: EdgeInsets.only(left: 30, right: 35),
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.green.shade300,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(0, 1),
+                                spreadRadius: 1,
+                                blurRadius: 4,
+                              )
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: LineChart(LineChartData(
+                              gridData: FlGridData(
+                                drawVerticalLine: true,
+                                horizontalInterval: 35,
+                                verticalInterval: 0.5,
+                                getDrawingHorizontalLine: (value) {
+                                  return FlLine(
+                                    color: Colors.white.withOpacity(0.2),
+                                    strokeWidth: 1,
+                                  );
+                                },
+                                getDrawingVerticalLine: (value) {
+                                  return FlLine(
+                                    color: Colors.white.withOpacity(0.2),
+                                    strokeWidth: 1,
+                                  );
+                                },
+                              ),
+                              borderData: FlBorderData(show: false),
+                              titlesData: FlTitlesData(
+                                topTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                leftTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                rightTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                              ),
+                              minY: 0,
+                              maxY: 300,
+                              lineBarsData: [
+                                LineChartBarData(
+                                    belowBarData: BarAreaData(
+                                        color: Colors.green.shade700,
+                                        show: true),
+                                    isCurved: false,
+                                    dotData: FlDotData(show: false),
+                                    color: Colors.green.shade700,
+                                    spots: [
+                                      FlSpot(0, 100),
+                                      FlSpot(1, 50),
+                                      FlSpot(3, 140),
+                                      FlSpot(4, 150),
+                                      FlSpot(5, 70),
+                                      FlSpot(6, 150),
+                                    ])
+                              ])),
+                        ),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text('Recovery',
-                                style: TextStyle(color: Colors.white)),
+                          Text('2298',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30)),
+                          Text('Current Students',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(Icons.arrow_downward,
+                                  color: Colors.white, size: 20),
+                              Text('11%',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20)),
+                            ],
                           ),
-                          Text('1801000',
-                              style: TextStyle(color: Colors.white)),
                         ],
+                      )
+                    ]),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Stack(alignment: Alignment.center, children: [
+                      Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.purple.shade300,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(0, 1),
+                                spreadRadius: 1,
+                                blurRadius: 4,
+                              )
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: LineChart(LineChartData(
+                              gridData: FlGridData(
+                                drawVerticalLine: true,
+                                horizontalInterval: 35,
+                                verticalInterval: 0.5,
+                                getDrawingHorizontalLine: (value) {
+                                  return FlLine(
+                                    color: Colors.white.withOpacity(0.2),
+                                    strokeWidth: 1,
+                                  );
+                                },
+                                getDrawingVerticalLine: (value) {
+                                  return FlLine(
+                                    color: Colors.white.withOpacity(0.2),
+                                    strokeWidth: 1,
+                                  );
+                                },
+                              ),
+                              borderData: FlBorderData(show: false),
+                              titlesData: FlTitlesData(
+                                topTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                leftTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                rightTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                              ),
+                              minY: 0,
+                              maxY: 300,
+                              lineBarsData: [
+                                LineChartBarData(
+                                    belowBarData: BarAreaData(
+                                        color: Colors.purple.shade700,
+                                        show: true),
+                                    isCurved: false,
+                                    dotData: FlDotData(show: false),
+                                    color: Colors.purple.shade700,
+                                    spots: [
+                                      FlSpot(0, 20),
+                                      FlSpot(1, 50),
+                                      FlSpot(3, 140),
+                                      FlSpot(4, 50),
+                                      FlSpot(5, 70),
+                                      FlSpot(6, 170),
+                                    ])
+                              ])),
+                        ),
                       ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('1058300',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30)),
+                          Text('Monthly Collection',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(Icons.arrow_downward,
+                                  color: Colors.white, size: 20),
+                              Text('5%',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20)),
+                            ],
+                          ),
+                        ],
+                      )
+                    ]),
+                    Stack(alignment: Alignment.center, children: [
+                      Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(
+                            color: Colors.red.shade300,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(0, 1),
+                                spreadRadius: 1,
+                                blurRadius: 4,
+                              )
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: LineChart(LineChartData(
+                              gridData: FlGridData(
+                                drawVerticalLine: true,
+                                horizontalInterval: 35,
+                                verticalInterval: 0.5,
+                                getDrawingHorizontalLine: (value) {
+                                  return FlLine(
+                                    color: Colors.white.withOpacity(0.2),
+                                    strokeWidth: 1,
+                                  );
+                                },
+                                getDrawingVerticalLine: (value) {
+                                  return FlLine(
+                                    color: Colors.white.withOpacity(0.2),
+                                    strokeWidth: 1,
+                                  );
+                                },
+                              ),
+                              borderData: FlBorderData(show: false),
+                              titlesData: FlTitlesData(
+                                topTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                leftTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                rightTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                                bottomTitles: AxisTitles(
+                                    sideTitles: SideTitles(showTitles: false)),
+                              ),
+                              minY: 0,
+                              maxY: 300,
+                              lineBarsData: [
+                                LineChartBarData(
+                                    belowBarData: BarAreaData(
+                                        color: Colors.red.shade700, show: true),
+                                    isCurved: false,
+                                    dotData: FlDotData(show: false),
+                                    color: Colors.red.shade700,
+                                    spots: [
+                                      FlSpot(0, 80),
+                                      FlSpot(1, 150),
+                                      FlSpot(3, 140),
+                                      FlSpot(4, 50),
+                                      FlSpot(5, 20),
+                                      FlSpot(6, 50),
+                                    ])
+                              ])),
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('8215160',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30)),
+                          Text('Pending Recovery',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15)),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(Icons.arrow_upward,
+                                  color: Colors.white, size: 20),
+                              Text('84%',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20)),
+                            ],
+                          )
+                        ],
+                      )
+                    ]),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Container(
+                  padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                  height: 250,
+                  decoration: BoxDecoration(color: Colors.blueGrey.shade900),
+                  child: BarChart(BarChartData(
+                    minY: 0,
+                    maxY: 30,
+                    barGroups: [
+                      BarChartGroupData(x: 1, barRods: [
+                        BarChartRodData(
+                            toY: 25,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 2, barRods: [
+                        BarChartRodData(
+                            toY: 2,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 3, barRods: [
+                        BarChartRodData(
+                            toY: 14,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 4, barRods: [
+                        BarChartRodData(
+                            toY: 2,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 5, barRods: [
+                        BarChartRodData(
+                            toY: 3,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 6, barRods: [
+                        BarChartRodData(
+                            toY: 2,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 7, barRods: [
+                        BarChartRodData(
+                            toY: 22,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 8, barRods: [
+                        BarChartRodData(
+                            toY: 27,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 9, barRods: [
+                        BarChartRodData(
+                            toY: 2,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 10, barRods: [
+                        BarChartRodData(
+                            toY: 2,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 11, barRods: [
+                        BarChartRodData(
+                            toY: 1,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 12, barRods: [
+                        BarChartRodData(
+                            toY: 9,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 13, barRods: [
+                        BarChartRodData(
+                            toY: 6,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 14, barRods: [
+                        BarChartRodData(
+                            toY: 1,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 15, barRods: [
+                        BarChartRodData(
+                            toY: 2,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 16, barRods: [
+                        BarChartRodData(
+                            toY: 2,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 17, barRods: [
+                        BarChartRodData(
+                            toY: 1,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
+                      BarChartGroupData(x: 18, barRods: [
+                        BarChartRodData(
+                            toY: 1,
+                            borderRadius: BorderRadius.circular(0),
+                            gradient: LinearGradient(
+                                colors: [Colors.blue, Colors.greenAccent]))
+                      ]),
                     ],
-                  ))
-            ],
+                    barTouchData:
+                        BarTouchData(touchTooltipData: BarTouchTooltipData(
+                      getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                        return BarTooltipItem(
+                          rod.toY.toInt().toString(),
+                          TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      },
+                    )),
+                    backgroundColor: Colors.grey.shade900,
+                    titlesData: FlTitlesData(
+                      show: true,
+                      topTitles: AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                      rightTitles: AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                      leftTitles: AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                      bottomTitles: AxisTitles(
+                        axisNameWidget: Text(
+                          'Number of Leads',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          getTitlesWidget: (double value, TitleMeta meta) {
+                            // Define your string labels here
+                            String text;
+                            switch (value.toInt()) {
+                              case 1:
+                                text = "OMT";
+                                break;
+                              case 2:
+                                text = "WPD";
+                                break;
+                              case 3:
+                                text = "GRD";
+                                break;
+                              case 4:
+                                text = "UXD";
+                                break;
+                              case 5:
+                                text = "LAR";
+                                break;
+                              case 6:
+                                text = "VUE";
+                                break;
+                              case 7:
+                                text = "PHP";
+                                break;
+                              case 8:
+                                text = "SEO";
+                                break;
+                              case 9:
+                                text = "IOS";
+                                break;
+                              case 10:
+                                text = "FLT";
+                                break;
+                              case 11:
+                                text = "CAD";
+                                break;
+                              case 12:
+                                text = "SPE";
+                                break;
+                              case 13:
+                                text = "IEL";
+                                break;
+                              case 14:
+                                text = "STE";
+                                break;
+                              case 15:
+                                text = "AVA";
+                                break;
+                              case 16:
+                                text = "DBA";
+                                break;
+                              case 17:
+                                text = "CNA";
+                                break;
+                              case 18:
+                                text = "SHY";
+                                break;
+                              default:
+                                text = "";
+                                break;
+                            }
+                            return Text(
+                              text,
+                              style: TextStyle(
+                                  color: Colors
+                                      .white, // Customize the label color here
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 8),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    borderData: FlBorderData(
+                        border: Border(
+                            top: BorderSide(color: Colors.white),
+                            right: BorderSide(color: Colors.white),
+                            left: BorderSide(color: Colors.white),
+                            bottom: BorderSide(color: Colors.white))),
+                    gridData: FlGridData(show: true),
+                  )),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -218,7 +853,7 @@ class _DashboardState extends State<Dashboard> {
   }
 
   Widget _buildGraph() {
-    switch (_selectedPeriod) {
+    switch (dashboardData.selectedPeriod) {
       case 'WEEKLY GRAPH':
         return _buildWeeklyGraph();
       case 'MONTHLY GRAPH':
@@ -226,7 +861,7 @@ class _DashboardState extends State<Dashboard> {
       case 'YEARLY GRAPH':
         return _buildYearlyGraph();
       default:
-        return _buildWeeklyGraph(); // Default to weekly graph if none selected
+        return _buildWeeklyGraph();
     }
   }
 
@@ -277,15 +912,15 @@ class _DashboardState extends State<Dashboard> {
                 )),
             gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
-              FlSpot(-1, mon.toDouble()),
-              FlSpot(0, mon.toDouble()),
-              FlSpot(1, tue.toDouble()),
-              FlSpot(2, wed.toDouble()),
-              FlSpot(3, thu.toDouble()),
-              FlSpot(4, fri.toDouble()),
-              FlSpot(5, sat.toDouble()),
-              FlSpot(6, sun.toDouble()),
-              FlSpot(7, sun.toDouble()),
+              FlSpot(-1, dashboardData.mon.toDouble()),
+              FlSpot(0, dashboardData.mon.toDouble()),
+              FlSpot(1, dashboardData.tue.toDouble()),
+              FlSpot(2, dashboardData.wed.toDouble()),
+              FlSpot(3, dashboardData.thu.toDouble()),
+              FlSpot(4, dashboardData.fri.toDouble()),
+              FlSpot(5, dashboardData.sat.toDouble()),
+              FlSpot(6, dashboardData.sun.toDouble()),
+              FlSpot(7, dashboardData.sun.toDouble()),
             ],
             isCurved: true,
             barWidth: 2,
@@ -447,12 +1082,12 @@ class _DashboardState extends State<Dashboard> {
                 )),
             gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
-              FlSpot(-1, week1.toDouble()),
-              FlSpot(0, week1.toDouble()),
-              FlSpot(1, week2.toDouble()),
-              FlSpot(2, week3.toDouble()),
-              FlSpot(3, week4.toDouble()),
-              FlSpot(4, week4.toDouble()),
+              FlSpot(-1, dashboardData.week1.toDouble()),
+              FlSpot(0, dashboardData.week1.toDouble()),
+              FlSpot(1, dashboardData.week2.toDouble()),
+              FlSpot(2, dashboardData.week3.toDouble()),
+              FlSpot(3, dashboardData.week4.toDouble()),
+              FlSpot(4, dashboardData.week4.toDouble()),
             ],
             isCurved: true,
             barWidth: 2,
@@ -590,20 +1225,20 @@ class _DashboardState extends State<Dashboard> {
                 )),
             gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
             spots: [
-              FlSpot(-1, jan.toDouble()),
-              FlSpot(0, jan.toDouble()),
-              FlSpot(1, feb.toDouble()),
-              FlSpot(2, mar.toDouble()),
-              FlSpot(3, apr.toDouble()),
-              FlSpot(4, may.toDouble()),
-              FlSpot(5, jun.toDouble()),
-              FlSpot(6, jul.toDouble()),
-              FlSpot(7, aug.toDouble()),
-              FlSpot(8, sep.toDouble()),
-              FlSpot(9, oct.toDouble()),
-              FlSpot(10, nov.toDouble()),
-              FlSpot(11, dec.toDouble()),
-              FlSpot(12, dec.toDouble()),
+              FlSpot(-1, dashboardData.jan.toDouble()),
+              FlSpot(0, dashboardData.jan.toDouble()),
+              FlSpot(1, dashboardData.feb.toDouble()),
+              FlSpot(2, dashboardData.mar.toDouble()),
+              FlSpot(3, dashboardData.apr.toDouble()),
+              FlSpot(4, dashboardData.may.toDouble()),
+              FlSpot(5, dashboardData.jun.toDouble()),
+              FlSpot(6, dashboardData.jul.toDouble()),
+              FlSpot(7, dashboardData.aug.toDouble()),
+              FlSpot(8, dashboardData.sep.toDouble()),
+              FlSpot(9, dashboardData.oct.toDouble()),
+              FlSpot(10, dashboardData.nov.toDouble()),
+              FlSpot(11, dashboardData.dec.toDouble()),
+              FlSpot(12, dashboardData.dec.toDouble()),
             ],
             isCurved: true,
             barWidth: 2,
