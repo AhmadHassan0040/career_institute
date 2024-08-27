@@ -596,254 +596,16 @@ class _DashboardState extends State<Dashboard> {
                   padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
                   height: 250,
                   decoration: BoxDecoration(color: Colors.blueGrey.shade900),
-                  child: BarChart(BarChartData(
-                    minY: 0,
-                    maxY: 30,
-                    barGroups: [
-                      BarChartGroupData(x: 1, barRods: [
-                        BarChartRodData(
-                            toY: 25,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 2, barRods: [
-                        BarChartRodData(
-                            toY: 2,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 3, barRods: [
-                        BarChartRodData(
-                            toY: 14,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 4, barRods: [
-                        BarChartRodData(
-                            toY: 2,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 5, barRods: [
-                        BarChartRodData(
-                            toY: 3,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 6, barRods: [
-                        BarChartRodData(
-                            toY: 2,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 7, barRods: [
-                        BarChartRodData(
-                            toY: 22,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 8, barRods: [
-                        BarChartRodData(
-                            toY: 27,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 9, barRods: [
-                        BarChartRodData(
-                            toY: 2,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 10, barRods: [
-                        BarChartRodData(
-                            toY: 2,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 11, barRods: [
-                        BarChartRodData(
-                            toY: 1,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 12, barRods: [
-                        BarChartRodData(
-                            toY: 9,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 13, barRods: [
-                        BarChartRodData(
-                            toY: 6,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 14, barRods: [
-                        BarChartRodData(
-                            toY: 1,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 15, barRods: [
-                        BarChartRodData(
-                            toY: 2,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 16, barRods: [
-                        BarChartRodData(
-                            toY: 2,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 17, barRods: [
-                        BarChartRodData(
-                            toY: 1,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                      BarChartGroupData(x: 18, barRods: [
-                        BarChartRodData(
-                            toY: 1,
-                            borderRadius: BorderRadius.circular(0),
-                            gradient: LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent]))
-                      ]),
-                    ],
-                    barTouchData:
-                        BarTouchData(touchTooltipData: BarTouchTooltipData(
-                      getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                        return BarTooltipItem(
-                          rod.toY.toInt().toString(),
-                          TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    )),
-                    backgroundColor: Colors.grey.shade900,
-                    titlesData: FlTitlesData(
-                      show: true,
-                      topTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      rightTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      bottomTitles: AxisTitles(
-                        axisNameWidget: Text(
-                          'Number of Leads',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                        ),
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: (double value, TitleMeta meta) {
-                            // Define your string labels here
-                            String text;
-                            switch (value.toInt()) {
-                              case 1:
-                                text = "OMT";
-                                break;
-                              case 2:
-                                text = "WPD";
-                                break;
-                              case 3:
-                                text = "GRD";
-                                break;
-                              case 4:
-                                text = "UXD";
-                                break;
-                              case 5:
-                                text = "LAR";
-                                break;
-                              case 6:
-                                text = "VUE";
-                                break;
-                              case 7:
-                                text = "PHP";
-                                break;
-                              case 8:
-                                text = "SEO";
-                                break;
-                              case 9:
-                                text = "IOS";
-                                break;
-                              case 10:
-                                text = "FLT";
-                                break;
-                              case 11:
-                                text = "CAD";
-                                break;
-                              case 12:
-                                text = "SPE";
-                                break;
-                              case 13:
-                                text = "IEL";
-                                break;
-                              case 14:
-                                text = "STE";
-                                break;
-                              case 15:
-                                text = "AVA";
-                                break;
-                              case 16:
-                                text = "DBA";
-                                break;
-                              case 17:
-                                text = "CNA";
-                                break;
-                              case 18:
-                                text = "SHY";
-                                break;
-                              default:
-                                text = "";
-                                break;
-                            }
-                            return Text(
-                              text,
-                              style: TextStyle(
-                                  color: Colors
-                                      .white, // Customize the label color here
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 8),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    borderData: FlBorderData(
-                        border: Border(
-                            top: BorderSide(color: Colors.white),
-                            right: BorderSide(color: Colors.white),
-                            left: BorderSide(color: Colors.white),
-                            bottom: BorderSide(color: Colors.white))),
-                    gridData: FlGridData(show: true),
-                  )),
+                  child: _buildLeadsGraph(),
                 ),
+                SizedBox(height: 20),
+                Container(
+                  padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                  height: 250,
+                  decoration: BoxDecoration(color: Colors.blueGrey.shade900),
+                  child: _buildAdmissionsGraph(),
+                ),
+                SizedBox(height: 20),
               ],
             ),
           ),
@@ -1403,5 +1165,302 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
     );
+  }
+
+  Widget _buildLeadsGraph() {
+    return BarChart(BarChartData(
+      minY: 0,
+      maxY: 30,
+      barGroups: [
+        BarChartGroupData(x: 1, barRods: [
+          BarChartRodData(
+              toY: 25,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 2, barRods: [
+          BarChartRodData(
+              toY: 2,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 3, barRods: [
+          BarChartRodData(
+              toY: 14,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 4, barRods: [
+          BarChartRodData(
+              toY: 2,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 5, barRods: [
+          BarChartRodData(
+              toY: 3,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 6, barRods: [
+          BarChartRodData(
+              toY: 2,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 7, barRods: [
+          BarChartRodData(
+              toY: 22,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 8, barRods: [
+          BarChartRodData(
+              toY: 27,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 9, barRods: [
+          BarChartRodData(
+              toY: 2,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 10, barRods: [
+          BarChartRodData(
+              toY: 2,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 11, barRods: [
+          BarChartRodData(
+              toY: 1,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 12, barRods: [
+          BarChartRodData(
+              toY: 9,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 13, barRods: [
+          BarChartRodData(
+              toY: 6,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 14, barRods: [
+          BarChartRodData(
+              toY: 1,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 15, barRods: [
+          BarChartRodData(
+              toY: 2,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 16, barRods: [
+          BarChartRodData(
+              toY: 2,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 17, barRods: [
+          BarChartRodData(
+              toY: 1,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+        BarChartGroupData(x: 18, barRods: [
+          BarChartRodData(
+              toY: 1,
+              borderRadius: BorderRadius.circular(0),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]),
+      ],
+      barTouchData: BarTouchData(touchTooltipData: BarTouchTooltipData(
+        getTooltipItem: (group, groupIndex, rod, rodIndex) {
+          return BarTooltipItem(
+            rod.toY.toInt().toString(),
+            TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          );
+        },
+      )),
+      backgroundColor: Colors.grey.shade900,
+      titlesData: FlTitlesData(
+        show: true,
+        topTitles: AxisTitles(
+          axisNameWidget: Text(
+            'CURRENT MONTH LEADS',
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        bottomTitles: AxisTitles(
+          axisNameWidget: Text(
+            'Number of Leads',
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+          sideTitles: SideTitles(
+            showTitles: true,
+            getTitlesWidget: (double value, TitleMeta meta) {
+              // Define your string labels here
+              String text;
+              switch (value.toInt()) {
+                case 1:
+                  text = "OMT";
+                  break;
+                case 2:
+                  text = "WPD";
+                  break;
+                case 3:
+                  text = "GRD";
+                  break;
+                case 4:
+                  text = "UXD";
+                  break;
+                case 5:
+                  text = "LAR";
+                  break;
+                case 6:
+                  text = "VUE";
+                  break;
+                case 7:
+                  text = "PHP";
+                  break;
+                case 8:
+                  text = "SEO";
+                  break;
+                case 9:
+                  text = "IOS";
+                  break;
+                case 10:
+                  text = "FLT";
+                  break;
+                case 11:
+                  text = "CAD";
+                  break;
+                case 12:
+                  text = "SPE";
+                  break;
+                case 13:
+                  text = "IEL";
+                  break;
+                case 14:
+                  text = "STE";
+                  break;
+                case 15:
+                  text = "AVA";
+                  break;
+                case 16:
+                  text = "DBA";
+                  break;
+                case 17:
+                  text = "CNA";
+                  break;
+                case 18:
+                  text = "SHY";
+                  break;
+                default:
+                  text = "";
+                  break;
+              }
+              return Text(
+                text,
+                style: TextStyle(
+                    color: Colors.white, // Customize the label color here
+                    fontWeight: FontWeight.bold,
+                    fontSize: 8),
+              );
+            },
+          ),
+        ),
+      ),
+      borderData: FlBorderData(
+          border: Border(
+              top: BorderSide(color: Colors.white),
+              right: BorderSide(color: Colors.white),
+              left: BorderSide(color: Colors.white),
+              bottom: BorderSide(color: Colors.white))),
+      gridData: FlGridData(show: true),
+    ));
+  }
+
+  Widget _buildAdmissionsGraph() {
+    return PieChart(PieChartData(
+        sectionsSpace: 1,
+        titleSunbeamLayout: false,
+        centerSpaceColor: Colors.grey.shade900,
+        sections: [
+          PieChartSectionData(
+              value: 23,
+              badgePositionPercentageOffset: 0.5,
+              badgeWidget: Text(
+                '23',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
+              title: 'OMT',
+              titleStyle:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              titlePositionPercentageOffset: 1.5),
+          PieChartSectionData(
+              value: 1,
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent])),
+          PieChartSectionData(
+              value: 10,
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent])),
+          PieChartSectionData(
+              value: 20,
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent])),
+          PieChartSectionData(
+              value: 1,
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent])),
+          PieChartSectionData(
+              value: 1,
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent])),
+          PieChartSectionData(
+              value: 2,
+              gradient:
+                  LinearGradient(colors: [Colors.blue, Colors.greenAccent]))
+        ]));
   }
 }

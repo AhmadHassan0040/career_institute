@@ -22,11 +22,11 @@ class _LoginState extends State<Login> {
   LoginData formData = Get.put(LoginData());
 
   bool _passwordObscure = true;
+  bool _btnPressed = false;
 
   Icon _visibility = Icon(Icons.remove_red_eye_outlined);
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.blueGrey.shade900,
@@ -78,6 +78,7 @@ class _LoginState extends State<Login> {
             ),
             SizedBox(height: 15),
             Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.symmetric(vertical: 50),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -164,6 +165,15 @@ class _LoginState extends State<Login> {
                     SizedBox(height: 40),
                     GestureDetector(
                       onTap: () {
+                        setState(() {
+                          _btnPressed = !_btnPressed;
+                          Future.delayed(Duration(milliseconds: 100), () {
+                            setState(() {
+                              _btnPressed = !_btnPressed;
+                            });
+                          });
+                        });
+
                         if (_formKey.currentState!.validate()) {
                           if (formData.emailController.text ==
                                   'hasan.hasanf80@gmail.com' &&
@@ -187,7 +197,9 @@ class _LoginState extends State<Login> {
                                   offset: Offset(0, 3),
                                 )
                               ],
-                              color: Colors.blueGrey.shade900,
+                              color: _btnPressed
+                                  ? const Color.fromARGB(255, 14, 19, 21)
+                                  : Colors.blueGrey.shade900,
                               borderRadius: BorderRadius.circular(50)),
                           child: Center(
                             child: Text(
