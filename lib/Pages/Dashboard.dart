@@ -633,9 +633,71 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 SizedBox(height: 20),
                 Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border:
+                          Border(top: BorderSide(color: Colors.blue, width: 2)),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(5),
+                          topRight: Radius.circular(5))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 5.0, bottom: 5, left: 10, right: 1),
+                            child: ShaderMask(
+                              shaderCallback: (bounds) => LinearGradient(
+                                      colors: [Colors.blue, Colors.greenAccent])
+                                  .createShader(bounds),
+                              child: Text(
+                                'Daily Activity |',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            'Each Campus',
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text('Campus Code',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey.shade700)),
+                            Text('Leads',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey.shade700)),
+                            Text('Admissions',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey.shade700)),
+                            Text('Collection',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey.shade700)),
+                          ]),
+                      Divider(height: 5),
+                    ],
+                  ),
+                ),
+                Container(
                   padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
                   height: 250,
-                  decoration: BoxDecoration(color: Colors.blueGrey.shade900),
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey.shade900,
+                  ),
                   child: _buildTable(),
                 ),
                 SizedBox(height: 20),
@@ -1654,53 +1716,12 @@ class _DashboardState extends State<Dashboard> {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
-          border: Border(top: BorderSide(color: Colors.blue, width: 2)),
-          borderRadius: BorderRadius.circular(5)),
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5))),
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 5.0, bottom: 5, left: 10, right: 1),
-                  child: ShaderMask(
-                    shaderCallback: (bounds) => LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent])
-                        .createShader(bounds),
-                    child: Text(
-                      'Daily Activity |',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white),
-                    ),
-                  ),
-                ),
-                Text(
-                  'Each Campus',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-              Text('Campus Code',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade700)),
-              Text('Leads',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade700)),
-              Text('Admissions',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade700)),
-              Text('Collection',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade700)),
-            ]),
-            Divider(height: 5),
             Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: Row(
@@ -2198,7 +2219,11 @@ class _DashboardState extends State<Dashboard> {
             Divider(height: 5),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10),
-              color: Colors.greenAccent.shade100,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(5),
+                      bottomRight: Radius.circular(5)),
+                  color: Colors.greenAccent.shade100),
               child: Padding(
                 padding: const EdgeInsets.only(left: 12.0),
                 child: Row(
