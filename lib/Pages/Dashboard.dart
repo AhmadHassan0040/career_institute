@@ -632,6 +632,13 @@ class _DashboardState extends State<Dashboard> {
                   child: _buildLeadOrAdmission(),
                 ),
                 SizedBox(height: 20),
+                Container(
+                  padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                  height: 250,
+                  decoration: BoxDecoration(color: Colors.blueGrey.shade900),
+                  child: _buildTable(),
+                ),
+                SizedBox(height: 20),
               ],
             ),
           ),
@@ -1641,5 +1648,614 @@ class _DashboardState extends State<Dashboard> {
               bottom: BorderSide(color: Colors.white))),
       gridData: FlGridData(show: true),
     ));
+  }
+
+  Widget _buildTable() {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border(top: BorderSide(color: Colors.blue, width: 2)),
+          borderRadius: BorderRadius.circular(5)),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 5.0, bottom: 5, left: 10, right: 1),
+                  child: ShaderMask(
+                    shaderCallback: (bounds) => LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent])
+                        .createShader(bounds),
+                    child: Text(
+                      'Daily Activity |',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                  ),
+                ),
+                Text(
+                  'Each Campus',
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              Text('Campus Code',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade700)),
+              Text('Leads',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade700)),
+              Text('Admissions',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade700)),
+              Text('Collection',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade700)),
+            ]),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CIFSD01',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CIFSD02',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CIFSD03',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CIFSD04',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CIFSD05',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CISWL01',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CIRYK01',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CISGD01',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CILHR01',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CILHE01',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(left: 15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 25,
+                    width: 80,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.greenAccent]),
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Center(
+                      child: Text(
+                        'CIOKR01',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                  Container(
+                    height: 25,
+                    width: 80,
+                    child: Center(
+                      child: Text('0'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 5),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              color: Colors.greenAccent.shade100,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      height: 25,
+                      width: 80,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Colors.blue, Colors.greenAccent]),
+                          borderRadius: BorderRadius.circular(5)),
+                      child: Center(
+                        child: Text(
+                          'TOTAL',
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 25,
+                      width: 80,
+                      child: Center(
+                        child: Text(
+                          '0',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 25,
+                      width: 80,
+                      child: Center(
+                        child: Text(
+                          '0',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 25,
+                      width: 80,
+                      child: Center(
+                        child: Text(
+                          '0',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
