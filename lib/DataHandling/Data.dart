@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 class DashboardData extends GetxController {
   String selectedPeriod = 'WEEKLY GRAPH';
+  String selectedGraph = 'ADMISSIONS';
 
   int monthlyIncome = 1500;
 

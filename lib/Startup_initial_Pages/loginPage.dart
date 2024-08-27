@@ -78,7 +78,6 @@ class _LoginState extends State<Login> {
             ),
             SizedBox(height: 15),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
               padding: EdgeInsets.symmetric(vertical: 50),
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -167,22 +166,23 @@ class _LoginState extends State<Login> {
                       onTap: () {
                         setState(() {
                           _btnPressed = !_btnPressed;
-                          Future.delayed(Duration(milliseconds: 100), () {
+                          Future.delayed(Duration(milliseconds: 1000), () {
                             setState(() {
                               _btnPressed = !_btnPressed;
+                              if (_formKey.currentState!.validate()) {
+                                if (formData.emailController.text ==
+                                        'hasan.hasanf80@gmail.com' &&
+                                    formData.passController.text ==
+                                        '11111111') {
+                                  Get.offAll(() => Dashboard(),
+                                      transition:
+                                          Transition.rightToLeftWithFade,
+                                      duration: Duration(seconds: 1));
+                                }
+                              }
                             });
                           });
                         });
-
-                        if (_formKey.currentState!.validate()) {
-                          if (formData.emailController.text ==
-                                  'hasan.hasanf80@gmail.com' &&
-                              formData.passController.text == '11111111') {
-                            Get.offAll(() => Dashboard(),
-                                transition: Transition.rightToLeftWithFade,
-                                duration: Duration(seconds: 1));
-                          }
-                        }
                       },
                       child: Center(
                         child: Container(
@@ -197,22 +197,41 @@ class _LoginState extends State<Login> {
                                   offset: Offset(0, 3),
                                 )
                               ],
-                              color: _btnPressed
-                                  ? const Color.fromARGB(255, 14, 19, 21)
-                                  : Colors.blueGrey.shade900,
+                              color: Colors.blueGrey.shade900,
                               borderRadius: BorderRadius.circular(50)),
                           child: Center(
-                            child: Text(
-                              'LOG IN',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25),
-                            ),
+                            child: _btnPressed
+                                ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                        height: 25,
+                                        child: CircularProgressIndicator(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(width: 25),
+                                      Text(
+                                        'LOG IN',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25),
+                                      ),
+                                    ],
+                                  )
+                                : Text(
+                                    'LOG IN',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25),
+                                  ),
                           ),
                         ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
