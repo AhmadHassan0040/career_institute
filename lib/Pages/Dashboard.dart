@@ -599,7 +599,7 @@ class _DashboardState extends State<Dashboard> {
                       backgroundColor: Colors.transparent,
                       children: {
                         'LEADS': Text(
-                          'CURRENT MONTH LEADS',
+                          'THIS MONTH\'s LEAD',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: dashboardData.selectedGraph == 'LEADS'
@@ -608,7 +608,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                         'ADMISSIONS': Text(
-                          'CURRENT MONTH ADMISSIONS',
+                          'THIS MONTH\'s ADMISSION',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: dashboardData.selectedGraph == 'ADMISSIONS'
@@ -1702,7 +1702,7 @@ class _DashboardState extends State<Dashboard> {
             ]),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -1747,7 +1747,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -1792,7 +1792,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -1837,7 +1837,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -1882,7 +1882,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -1927,7 +1927,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -1972,7 +1972,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -2017,7 +2017,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -2062,7 +2062,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -2107,7 +2107,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -2152,7 +2152,7 @@ class _DashboardState extends State<Dashboard> {
             ),
             Divider(height: 5),
             Padding(
-              padding: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -2200,7 +2200,7 @@ class _DashboardState extends State<Dashboard> {
               padding: EdgeInsets.symmetric(vertical: 10),
               color: Colors.greenAccent.shade100,
               child: Padding(
-                padding: const EdgeInsets.only(left: 15.0),
+                padding: const EdgeInsets.only(left: 12.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
