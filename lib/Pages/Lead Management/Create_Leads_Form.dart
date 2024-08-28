@@ -37,6 +37,9 @@ class _LeadFormState extends State<LeadForm> {
           'CREATE NEW LEAD',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        flexibleSpace: Container(
+          color: Colors.blueGrey.shade900,
+        ),
       ),
       body: Center(
         child: Container(
