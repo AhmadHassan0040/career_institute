@@ -30,42 +30,46 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Animate(
-              effects: [
-                FadeEffect(duration: Duration(seconds: 1)),
-                MoveEffect()
-              ],
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage('lib/images/career institute.jpg'),
-                    fit: BoxFit.cover,
+        child: Container(
+          height: 500,
+          width: 500,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Animate(
+                effects: [
+                  FadeEffect(duration: Duration(seconds: 1)),
+                  MoveEffect()
+                ],
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage('lib/images/career institute.jpg'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 80,
-            ),
-            Animate(effects: [
-              FadeEffect(duration: Duration(seconds: 1)),
-            ], child: Text('BUILD YOUR FUTUTRE WITH US')),
-            SizedBox(
-              height: 25,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 100.0),
-              child: LinearProgressIndicator(
-                color: Colors.grey.shade900,
+              SizedBox(
+                height: 80,
               ),
-            )
-          ],
+              Animate(effects: [
+                FadeEffect(duration: Duration(seconds: 1)),
+              ], child: Text('BUILD YOUR FUTUTRE WITH US')),
+              SizedBox(
+                height: 25,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                child: LinearProgressIndicator(
+                  color: Colors.grey.shade900,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

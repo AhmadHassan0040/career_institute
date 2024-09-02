@@ -1,10 +1,11 @@
 import 'package:career_institute/DataHandling/Data.dart';
+import 'package:career_institute/Modules/myAppBar.dart';
 import 'package:career_institute/Modules/myDrawer.dart';
-import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
 
 class Dashboard extends StatefulWidget {
@@ -16,6 +17,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   DashboardData dashboardData = DashboardData();
+  String? viewMode;
 
   Future<void> _pageRefresh() async {
     setState(() {
@@ -26,29 +28,18 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.white,
-        flexibleSpace: Container(color: Colors.blueGrey.shade900),
-        title: Text(
-          'DASHBOARD',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.offAll(Login(), transition: Transition.rightToLeftWithFade);
-              },
-              icon: Icon(Icons.logout))
-        ],
-      ),
       drawer: myDrawer(),
+      backgroundColor: Colors.blueGrey.shade900,
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 600) {
+          viewMode = 'mob';
           return _mobileView();
-        } else if (constraints.maxWidth >= 600 && constraints.maxWidth < 768) {
+        } else if (constraints.maxWidth >= 600 &&
+            constraints.maxWidth <= 1024) {
+          viewMode = 'tab';
           return _tabletView();
         } else {
+          viewMode = 'win';
           return _windowView();
         }
       }),
@@ -65,6 +56,7 @@ class _DashboardState extends State<Dashboard> {
           onRefresh: _pageRefresh,
           child: ListView(
             children: [
+              myAppBar(title: 'DASHBOARD', mode: viewMode!),
               Container(
                 height: 70,
                 color: Colors.blueGrey.shade900,
@@ -350,6 +342,7 @@ class _DashboardState extends State<Dashboard> {
           onRefresh: _pageRefresh,
           child: ListView(
             children: [
+              myAppBar(title: 'DASHBOARD', mode: viewMode!),
               Container(
                 height: 70,
                 color: Colors.blueGrey.shade900,
@@ -382,7 +375,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
               Container(
-                  height: 200,
+                  height: 400,
                   decoration: BoxDecoration(
                     color: Colors.blueGrey.shade900,
                   ),
@@ -433,7 +426,7 @@ class _DashboardState extends State<Dashboard> {
                   height: 100,
                   color: Colors.blueGrey.shade900,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -501,44 +494,24 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
               SizedBox(height: 20),
-              Container(
-                color: Colors.blueGrey.shade900,
-                child: CupertinoSlidingSegmentedControl(
-                    thumbColor: Colors.white,
-                    backgroundColor: Colors.transparent,
-                    children: {
-                      'LEADS': Text(
-                        'THIS MONTH\'s LEAD',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: dashboardData.selectedGraph == 'LEADS'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                      'ADMISSIONS': Text(
-                        'THIS MONTH\'s ADMISSION',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: dashboardData.selectedGraph == 'ADMISSIONS'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                    },
-                    groupValue: dashboardData.selectedGraph,
-                    onValueChanged: (String? newValue) {
-                      setState(() {
-                        dashboardData.selectedGraph = newValue!;
-                      });
-                    }),
-              ),
-              SizedBox(height: 20),
-              Container(
-                padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                height: 250,
-                decoration: BoxDecoration(color: Colors.blueGrey.shade900),
-                child: _buildLeadOrAdmission(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    height: 250,
+                    width: 300,
+                    decoration: BoxDecoration(color: Colors.blueGrey.shade900),
+                    child: _buildLeadsGraph(),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    height: 250,
+                    width: 300,
+                    decoration: BoxDecoration(color: Colors.blueGrey.shade900),
+                    child: _buildAdmissionsGraph(),
+                  ),
+                ],
               ),
               SizedBox(height: 20),
               Container(
@@ -603,11 +576,11 @@ class _DashboardState extends State<Dashboard> {
               ),
               Container(
                 padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                height: 250,
+                height: 385,
                 decoration: BoxDecoration(
                   color: Colors.blueGrey.shade900,
                 ),
-                child: _buildTable(),
+                child: _buildTabletViewTable(),
               ),
               SizedBox(height: 20),
             ],
@@ -618,283 +591,303 @@ class _DashboardState extends State<Dashboard> {
   }
 
   Widget _windowView() {
-    return Container(
-      color: Colors.blueGrey.shade900,
-      child: Center(
-        child: RefreshIndicator(
-          backgroundColor: Colors.blueGrey.shade900,
-          color: Colors.greenAccent,
-          onRefresh: _pageRefresh,
-          child: ListView(
-            children: [
-              Container(
-                height: 70,
-                color: Colors.blueGrey.shade900,
-                child: Center(
-                  child: Column(
-                    children: [
-                      Text(
-                        dashboardData.selectedPeriod,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10),
-                      ),
-                      ShaderMask(
-                        shaderCallback: (bounds) => LinearGradient(
-                                colors: [Colors.blue, Colors.greenAccent])
-                            .createShader(bounds),
-                        child: Text('\$${dashboardData.monthlyIncome}',
+    double _screenWidth = MediaQuery.of(context).size.width;
+    return Row(
+      children: [
+        Container(
+          width: 304,
+          color: Colors.white,
+          child: drawerData(),
+        ),
+        Container(
+          width: _screenWidth - 304,
+          color: Colors.blueGrey.shade900,
+          child: Center(
+            child: RefreshIndicator(
+              backgroundColor: Colors.blueGrey.shade900,
+              color: Colors.greenAccent,
+              onRefresh: _pageRefresh,
+              child: ListView(
+                children: [
+                  myAppBar(title: 'DASHBOARD', mode: viewMode!),
+                  Container(
+                    height: 70,
+                    color: Colors.blueGrey.shade900,
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Text(
+                            dashboardData.selectedPeriod,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 25)),
+                                fontSize: 10),
+                          ),
+                          ShaderMask(
+                            shaderCallback: (bounds) => LinearGradient(
+                                    colors: [Colors.blue, Colors.greenAccent])
+                                .createShader(bounds),
+                            child: Text('\$${dashboardData.monthlyIncome}',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 25)),
+                          ),
+                          Text(
+                            'TOTAL INCOME THIS MONTH',
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                        ],
                       ),
-                      Text(
-                        'TOTAL INCOME THIS MONTH',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.blueGrey.shade900,
-                  ),
-                  child: Row(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      _buildGraph(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              height: 400,
+                              width: 570,
+                              decoration: BoxDecoration(
+                                color: Colors.blueGrey.shade900,
+                              ),
+                              child: _buildWindowGraph()),
+                          Container(
+                            width: 570,
+                            color: Colors.blueGrey.shade900,
+                            child: CupertinoSlidingSegmentedControl(
+                                thumbColor: Colors.white,
+                                backgroundColor: Colors.transparent,
+                                children: {
+                                  'WEEKLY GRAPH': Text(
+                                    'WEEKLY',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: dashboardData.selectedPeriod ==
+                                              'WEEKLY GRAPH'
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
+                                  ),
+                                  'MONTHLY GRAPH': Text(
+                                    'MONTHLY',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: dashboardData.selectedPeriod ==
+                                              'MONTHLY GRAPH'
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
+                                  ),
+                                  'YEARLY GRAPH': Text(
+                                    'YEARLY',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: dashboardData.selectedPeriod ==
+                                              'YEARLY GRAPH'
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
+                                  ),
+                                },
+                                groupValue: dashboardData.selectedPeriod,
+                                onValueChanged: (String? newValue) {
+                                  setState(() {
+                                    dashboardData.selectedPeriod = newValue!;
+                                  });
+                                }),
+                          ),
+                        ],
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           _yellowChart(),
+                          SizedBox(height: 20),
                           _greenChart(),
+                          SizedBox(height: 20),
                           _purpleChart(),
+                          SizedBox(height: 20),
                           _redChart(),
+                          SizedBox(height: 10),
                         ],
                       )
                     ],
-                  )),
-              Container(
-                color: Colors.blueGrey.shade900,
-                child: CupertinoSlidingSegmentedControl(
-                    thumbColor: Colors.white,
-                    backgroundColor: Colors.transparent,
-                    children: {
-                      'WEEKLY GRAPH': Text(
-                        'WEEKLY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: dashboardData.selectedPeriod == 'WEEKLY GRAPH'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                      'MONTHLY GRAPH': Text(
-                        'MONTHLY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: dashboardData.selectedPeriod == 'MONTHLY GRAPH'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                      'YEARLY GRAPH': Text(
-                        'YEARLY',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: dashboardData.selectedPeriod == 'YEARLY GRAPH'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                    },
-                    groupValue: dashboardData.selectedPeriod,
-                    onValueChanged: (String? newValue) {
-                      setState(() {
-                        dashboardData.selectedPeriod = newValue!;
-                      });
-                    }),
-              ),
-              Container(
-                  alignment: Alignment.center,
-                  height: 100,
-                  color: Colors.blueGrey.shade900,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  ),
+                  Container(
+                      alignment: Alignment.center,
+                      height: 100,
+                      color: Colors.blueGrey.shade900,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                    colors: [
+                                      Colors.blue,
+                                      Colors.greenAccent
+                                    ]).createShader(bounds),
+                                child: Text('Registration',
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                              Text('1200000',
+                                  style: TextStyle(color: Colors.white)),
+                            ],
+                          ),
+                          Container(
+                            width: 0.5,
+                            height: 15,
+                            color: Colors.white,
+                            margin: EdgeInsets.only(left: 15, right: 30),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                    colors: [
+                                      Colors.blue,
+                                      Colors.greenAccent
+                                    ]).createShader(bounds),
+                                child: Text('Admission',
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                              Text('1600000',
+                                  style: TextStyle(color: Colors.white)),
+                            ],
+                          ),
+                          Container(
+                            width: 0.5,
+                            height: 15,
+                            color: Colors.white,
+                            margin: EdgeInsets.only(left: 30, right: 35),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                    colors: [
+                                      Colors.blue,
+                                      Colors.greenAccent
+                                    ]).createShader(bounds),
+                                child: Text('Recovery',
+                                    style: TextStyle(color: Colors.white)),
+                              ),
+                              Text('1801000',
+                                  style: TextStyle(color: Colors.white)),
+                            ],
+                          ),
+                        ],
+                      )),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text('Registration',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                          Text('1200000',
-                              style: TextStyle(color: Colors.white)),
-                        ],
+                      Container(
+                        padding:
+                            EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                        height: 260,
+                        width: 360,
+                        decoration:
+                            BoxDecoration(color: Colors.blueGrey.shade900),
+                        child: _buildLeadsGraph(),
                       ),
                       Container(
-                        width: 0.5,
-                        height: 15,
-                        color: Colors.white,
-                        margin: EdgeInsets.only(left: 15, right: 30),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text('Admission',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                          Text('1600000',
-                              style: TextStyle(color: Colors.white)),
-                        ],
-                      ),
-                      Container(
-                        width: 0.5,
-                        height: 15,
-                        color: Colors.white,
-                        margin: EdgeInsets.only(left: 30, right: 35),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text('Recovery',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                          Text('1801000',
-                              style: TextStyle(color: Colors.white)),
-                        ],
+                        padding:
+                            EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                        height: 260,
+                        width: 360,
+                        decoration:
+                            BoxDecoration(color: Colors.blueGrey.shade900),
+                        child: _buildAdmissionsGraph(),
                       ),
                     ],
-                  )),
-              SizedBox(height: 20),
-              Container(
-                color: Colors.blueGrey.shade900,
-                child: CupertinoSlidingSegmentedControl(
-                    thumbColor: Colors.white,
-                    backgroundColor: Colors.transparent,
-                    children: {
-                      'LEADS': Text(
-                        'THIS MONTH\'s LEAD',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: dashboardData.selectedGraph == 'LEADS'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                      'ADMISSIONS': Text(
-                        'THIS MONTH\'s ADMISSION',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: dashboardData.selectedGraph == 'ADMISSIONS'
-                              ? Colors.black
-                              : Colors.white,
-                        ),
-                      ),
-                    },
-                    groupValue: dashboardData.selectedGraph,
-                    onValueChanged: (String? newValue) {
-                      setState(() {
-                        dashboardData.selectedGraph = newValue!;
-                      });
-                    }),
-              ),
-              SizedBox(height: 20),
-              Container(
-                padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                height: 250,
-                decoration: BoxDecoration(color: Colors.blueGrey.shade900),
-                child: _buildLeadOrAdmission(),
-              ),
-              SizedBox(height: 20),
-              Container(
-                margin: EdgeInsets.only(left: 10, right: 10),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border:
-                        Border(top: BorderSide(color: Colors.blue, width: 2)),
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5))),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.only(left: 10, right: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border(
+                            top: BorderSide(color: Colors.blue, width: 2)),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 5.0, bottom: 5, left: 10, right: 1),
-                          child: ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text(
-                              'Daily Activity |',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 5.0, bottom: 5, left: 10, right: 1),
+                              child: ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                    colors: [
+                                      Colors.blue,
+                                      Colors.greenAccent
+                                    ]).createShader(bounds),
+                                child: Text(
+                                  'Daily Activity |',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
                             ),
-                          ),
+                            Text(
+                              'Each Campus',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                        Text(
-                          'Each Campus',
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
-                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text('Campus Code',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey.shade700)),
+                              Text('Leads',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey.shade700)),
+                              Text('Admissions',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey.shade700)),
+                              Text('Collection',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey.shade700)),
+                            ]),
+                        Divider(height: 5),
                       ],
                     ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text('Campus Code',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey.shade700)),
-                          Text('Leads',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey.shade700)),
-                          Text('Admissions',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey.shade700)),
-                          Text('Collection',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey.shade700)),
-                        ]),
-                    Divider(height: 5),
-                  ],
-                ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    height: 385,
+                    decoration: BoxDecoration(
+                      color: Colors.blueGrey.shade900,
+                    ),
+                    child: _buildTabletViewTable(),
+                  ),
+                  SizedBox(height: 20),
+                ],
               ),
-              Container(
-                padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                height: 250,
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey.shade900,
-                ),
-                child: _buildTable(),
-              ),
-              SizedBox(height: 20),
-            ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 
@@ -908,6 +901,19 @@ class _DashboardState extends State<Dashboard> {
         return _buildYearlyGraph();
       default:
         return _buildWeeklyGraph();
+    }
+  }
+
+  Widget _buildWindowGraph() {
+    switch (dashboardData.selectedPeriod) {
+      case 'WEEKLY GRAPH':
+        return _buildWeeklyWindowGraph();
+      case 'MONTHLY GRAPH':
+        return _buildMonthlyWindowGraph();
+      case 'YEARLY GRAPH':
+        return _buildYearlyWindowGraph();
+      default:
+        return _buildWeeklyWindowGraph();
     }
   }
 
@@ -967,6 +973,178 @@ class _DashboardState extends State<Dashboard> {
               FlSpot(5, dashboardData.sat.toDouble()),
               FlSpot(6, dashboardData.sun.toDouble()),
               FlSpot(7, dashboardData.sun.toDouble()),
+            ],
+            isCurved: true,
+            barWidth: 2,
+            isStrokeCapRound: true,
+            dotData: FlDotData(
+              show: true,
+              getDotPainter: (spot, percent, barData, index) {
+                return FlDotCirclePainter(
+                  radius: 2,
+                  color: Colors.white,
+                );
+              },
+            ),
+          ),
+        ],
+        titlesData: FlTitlesData(
+          topTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 30,
+              interval: 1,
+              getTitlesWidget: (value, meta) {
+                switch (value.toInt()) {
+                  case 0:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('MON',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 1:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('TUE',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 2:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('WED',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 3:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('THU',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 4:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('FRI',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 5:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('SAT',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 6:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('SUN',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+
+                  default:
+                    return const Text('');
+                }
+              },
+            ),
+          ),
+          rightTitles: const AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+            showTitles: false,
+            reservedSize: 40,
+            getTitlesWidget: (value, meta) {
+              return SideTitleWidget(
+                axisSide: meta.axisSide,
+                child: Text(
+                  value.toInt().toString(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              );
+            },
+          )),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWeeklyWindowGraph() {
+    return LineChart(
+      LineChartData(
+        gridData: FlGridData(
+          drawVerticalLine: false,
+          horizontalInterval: 42,
+          getDrawingHorizontalLine: (value) {
+            return FlLine(
+              color: Colors.white24,
+              strokeWidth: 1,
+            );
+          },
+        ),
+        borderData: FlBorderData(show: false),
+        backgroundColor: Colors.blueGrey.shade900,
+        minY: 0,
+        maxY: 300,
+        lineTouchData: LineTouchData(touchTooltipData: LineTouchTooltipData(
+          getTooltipItems: (List<LineBarSpot> touchedSpots) {
+            return touchedSpots.map((spot) {
+              return LineTooltipItem(
+                '${spot.y.toInt()}',
+                const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            }).toList();
+          },
+        )),
+        lineBarsData: [
+          LineChartBarData(show: false, spots: [
+            FlSpot(-1, dashboardData.mon.toDouble()),
+            FlSpot(7, dashboardData.sun.toDouble()),
+          ]),
+          LineChartBarData(
+            belowBarData: BarAreaData(
+                show: true,
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.greenAccent.withOpacity(0.2),
+                    Colors.greenAccent.withOpacity(0.15),
+                    Colors.greenAccent.withOpacity(0.1),
+                    Colors.greenAccent.withOpacity(0.05),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
+            gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
+            spots: [
+              FlSpot(0, dashboardData.mon.toDouble()),
+              FlSpot(1, dashboardData.tue.toDouble()),
+              FlSpot(2, dashboardData.wed.toDouble()),
+              FlSpot(3, dashboardData.thu.toDouble()),
+              FlSpot(4, dashboardData.fri.toDouble()),
+              FlSpot(5, dashboardData.sat.toDouble()),
+              FlSpot(6, dashboardData.sun.toDouble()),
             ],
             isCurved: true,
             barWidth: 2,
@@ -1224,6 +1402,151 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
+  Widget _buildMonthlyWindowGraph() {
+    return LineChart(
+      LineChartData(
+        gridData: FlGridData(
+          drawVerticalLine: false,
+          horizontalInterval: 42,
+          getDrawingHorizontalLine: (value) {
+            return FlLine(
+              color: Colors.white24,
+              strokeWidth: 1,
+            );
+          },
+        ),
+        borderData: FlBorderData(show: false),
+        backgroundColor: Colors.blueGrey.shade900,
+        minY: 0,
+        maxY: 300,
+        lineTouchData: LineTouchData(touchTooltipData: LineTouchTooltipData(
+          getTooltipItems: (List<LineBarSpot> touchedSpots) {
+            return touchedSpots.map((spot) {
+              return LineTooltipItem(
+                '${spot.y.toInt()}',
+                const TextStyle(
+                  color: Colors.white, // Text color
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            }).toList();
+          },
+        )),
+        lineBarsData: [
+          LineChartBarData(show: false, spots: [
+            FlSpot(-1, dashboardData.week1.toDouble()),
+            FlSpot(4, dashboardData.week4.toDouble()),
+          ]),
+          LineChartBarData(
+            belowBarData: BarAreaData(
+                show: true,
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.greenAccent.withOpacity(0.2),
+                    Colors.greenAccent.withOpacity(0.15),
+                    Colors.greenAccent.withOpacity(0.1),
+                    Colors.greenAccent.withOpacity(0.05),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
+            gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
+            spots: [
+              FlSpot(0, dashboardData.week1.toDouble()),
+              FlSpot(1, dashboardData.week2.toDouble()),
+              FlSpot(2, dashboardData.week3.toDouble()),
+              FlSpot(3, dashboardData.week4.toDouble()),
+            ],
+            isCurved: true,
+            barWidth: 2,
+            isStrokeCapRound: true,
+            dotData: FlDotData(
+              show: true,
+              getDotPainter: (spot, percent, barData, index) {
+                return FlDotCirclePainter(
+                  radius: 2,
+                  color: Colors.white,
+                );
+              },
+            ),
+          ),
+        ],
+        titlesData: FlTitlesData(
+          topTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 30,
+              interval: 1,
+              getTitlesWidget: (value, meta) {
+                switch (value.toInt()) {
+                  case 0:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('WEEK1',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 1:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('WEEK2',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 2:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('WEEK3',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+                  case 3:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('WEEK4',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    );
+
+                  default:
+                    return const Text('');
+                }
+              },
+            ),
+          ),
+          rightTitles: const AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+            showTitles: false,
+            reservedSize: 40,
+            getTitlesWidget: (value, meta) {
+              return SideTitleWidget(
+                axisSide: meta.axisSide,
+                child: Text(
+                  value.toInt().toString(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              );
+            },
+          )),
+        ),
+      ),
+    );
+  }
+
   Widget _buildYearlyGraph() {
     return LineChart(
       LineChartData(
@@ -1285,6 +1608,235 @@ class _DashboardState extends State<Dashboard> {
               FlSpot(10, dashboardData.nov.toDouble()),
               FlSpot(11, dashboardData.dec.toDouble()),
               FlSpot(12, dashboardData.dec.toDouble()),
+            ],
+            isCurved: true,
+            barWidth: 2,
+            isStrokeCapRound: true,
+            dotData: FlDotData(
+              show: true,
+              getDotPainter: (spot, percent, barData, index) {
+                return FlDotCirclePainter(
+                  radius: 2,
+                  color: Colors.white,
+                );
+              },
+            ),
+          ),
+        ],
+        titlesData: FlTitlesData(
+          topTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 30,
+              interval: 1,
+              getTitlesWidget: (value, meta) {
+                switch (value.toInt()) {
+                  case 0:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('JAN',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 1:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('FEB',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 2:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('MAR',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 3:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('APR',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 4:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('MAY',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 5:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('JUN',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 6:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('JUL',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 7:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('AUG',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 8:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('SEP',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 9:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('OCT',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 10:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('NOV',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+                  case 11:
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 0.0),
+                      child: const Text('DEC',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    );
+
+                  default:
+                    return const Text('');
+                }
+              },
+            ),
+          ),
+          rightTitles: const AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+            showTitles: false,
+            reservedSize: 40,
+            getTitlesWidget: (value, meta) {
+              return SideTitleWidget(
+                axisSide: meta.axisSide,
+                child: Text(
+                  value.toInt().toString(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              );
+            },
+          )),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildYearlyWindowGraph() {
+    return LineChart(
+      LineChartData(
+        gridData: FlGridData(
+          drawVerticalLine: false,
+          horizontalInterval: 42,
+          getDrawingHorizontalLine: (value) {
+            return FlLine(
+              color: Colors.white24,
+              strokeWidth: 1,
+            );
+          },
+        ),
+        borderData: FlBorderData(show: false),
+        backgroundColor: Colors.blueGrey.shade900,
+        minY: 0,
+        maxY: 300,
+        lineTouchData: LineTouchData(touchTooltipData: LineTouchTooltipData(
+          getTooltipItems: (List<LineBarSpot> touchedSpots) {
+            return touchedSpots.map((spot) {
+              return LineTooltipItem(
+                '${spot.y.toInt()}',
+                const TextStyle(
+                  color: Colors.white, // Text color
+                  fontWeight: FontWeight.bold,
+                ),
+              );
+            }).toList();
+          },
+        )),
+        lineBarsData: [
+          LineChartBarData(show: false, spots: [
+            FlSpot(-1, dashboardData.jan.toDouble()),
+            FlSpot(12, dashboardData.dec.toDouble()),
+          ]),
+          LineChartBarData(
+            belowBarData: BarAreaData(
+                show: true,
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.greenAccent.withOpacity(0.2),
+                    Colors.greenAccent.withOpacity(0.15),
+                    Colors.greenAccent.withOpacity(0.1),
+                    Colors.greenAccent.withOpacity(0.05),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
+            gradient: LinearGradient(colors: [Colors.blue, Colors.greenAccent]),
+            spots: [
+              FlSpot(0, dashboardData.jan.toDouble()),
+              FlSpot(1, dashboardData.feb.toDouble()),
+              FlSpot(2, dashboardData.mar.toDouble()),
+              FlSpot(3, dashboardData.apr.toDouble()),
+              FlSpot(4, dashboardData.may.toDouble()),
+              FlSpot(5, dashboardData.jun.toDouble()),
+              FlSpot(6, dashboardData.jul.toDouble()),
+              FlSpot(7, dashboardData.aug.toDouble()),
+              FlSpot(8, dashboardData.sep.toDouble()),
+              FlSpot(9, dashboardData.oct.toDouble()),
+              FlSpot(10, dashboardData.nov.toDouble()),
+              FlSpot(11, dashboardData.dec.toDouble()),
             ],
             isCurved: true,
             barWidth: 2,
@@ -2291,575 +2843,587 @@ class _DashboardState extends State<Dashboard> {
     ));
   }
 
+  Widget _dailyActivityTable() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CIFSD01',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CIFSD02',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CIFSD03',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CIFSD04',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CIFSD05',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CISWL01',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CIRYK01',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CISGD01',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CILHR01',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CILHE01',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 25,
+                width: 80,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue, Colors.greenAccent]),
+                    borderRadius: BorderRadius.circular(5)),
+                child: Center(
+                  child: Text(
+                    'CIOKR01',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+              Container(
+                height: 25,
+                width: 80,
+                child: Center(
+                  child: Text('0'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(height: 5),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(5),
+                  bottomRight: Radius.circular(5)),
+              color: Colors.greenAccent.shade100),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  height: 25,
+                  width: 80,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Colors.blue, Colors.greenAccent]),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Center(
+                    child: Text(
+                      'TOTAL',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 80,
+                  child: Center(
+                    child: Text(
+                      '0',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 80,
+                  child: Center(
+                    child: Text(
+                      '0',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 25,
+                  width: 80,
+                  child: Center(
+                    child: Text(
+                      '0',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildTable() {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5))),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CIFSD01',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CIFSD02',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CIFSD03',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CIFSD04',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CIFSD05',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CISWL01',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CIRYK01',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CISGD01',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CILHR01',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CILHE01',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    height: 25,
-                    width: 80,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.blue, Colors.greenAccent]),
-                        borderRadius: BorderRadius.circular(5)),
-                    child: Center(
-                      child: Text(
-                        'CIOKR01',
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                  Container(
-                    height: 25,
-                    width: 80,
-                    child: Center(
-                      child: Text('0'),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Divider(height: 5),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(5),
-                      bottomRight: Radius.circular(5)),
-                  color: Colors.greenAccent.shade100),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      height: 25,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Colors.blue, Colors.greenAccent]),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Center(
-                        child: Text(
-                          'TOTAL',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          '0',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          '0',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 25,
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          '0',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      child: SingleChildScrollView(child: _dailyActivityTable()),
+    );
+  }
+
+  Widget _buildTabletViewTable() {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5))),
+      child: _dailyActivityTable(),
     );
   }
 }
