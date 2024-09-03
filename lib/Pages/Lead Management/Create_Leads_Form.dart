@@ -184,7 +184,7 @@ class _LeadFormState extends State<LeadForm> {
   }
 
   Widget _tabletView() {
-    return _mobileView();
+    return _Form();
   }
 
   Widget _windowView() {
