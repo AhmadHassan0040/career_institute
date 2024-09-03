@@ -438,11 +438,11 @@ class _LoginState extends State<Login> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
+          height: 500,
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-              image: DecorationImage(
-                  image: AssetImage('lib/images/loginIMG.png'))),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          child: Image.asset('lib/images/loginImage.png'),
         ),
         _tabletView(),
       ],
