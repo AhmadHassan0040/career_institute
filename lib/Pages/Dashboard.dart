@@ -6,6 +6,10 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:pdf/widgets.dart' as pw;
+import 'package:pdf/pdf.dart';
+import 'package:printing/printing.dart';
+
 import 'package:get/get.dart';
 
 class Dashboard extends StatefulWidget {
@@ -269,27 +273,36 @@ class _DashboardState extends State<Dashboard> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 5.0, bottom: 5, left: 10, right: 1),
-                          child: ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text(
-                              'Daily Activity |',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 5.0, bottom: 5, left: 10, right: 1),
+                              child: ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                    colors: [
+                                      Colors.blue,
+                                      Colors.greenAccent
+                                    ]).createShader(bounds),
+                                child: Text(
+                                  'Daily Activity |',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
                             ),
-                          ),
+                            Text(
+                              'Each Campus',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                        Text(
-                          'Each Campus',
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
-                        ),
+                        IconButton(
+                            onPressed: _printDoc, icon: Icon(Icons.print))
                       ],
                     ),
                     Row(
@@ -527,27 +540,36 @@ class _DashboardState extends State<Dashboard> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 5.0, bottom: 5, left: 10, right: 1),
-                          child: ShaderMask(
-                            shaderCallback: (bounds) => LinearGradient(
-                                    colors: [Colors.blue, Colors.greenAccent])
-                                .createShader(bounds),
-                            child: Text(
-                              'Daily Activity |',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 5.0, bottom: 5, left: 10, right: 1),
+                              child: ShaderMask(
+                                shaderCallback: (bounds) => LinearGradient(
+                                    colors: [
+                                      Colors.blue,
+                                      Colors.greenAccent
+                                    ]).createShader(bounds),
+                                child: Text(
+                                  'Daily Activity |',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ),
                             ),
-                          ),
+                            Text(
+                              'Each Campus',
+                              style: TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                        Text(
-                          'Each Campus',
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
-                        ),
+                        IconButton(
+                            onPressed: _printDoc, icon: Icon(Icons.print))
                       ],
                     ),
                     Row(
@@ -824,29 +846,37 @@ class _DashboardState extends State<Dashboard> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 5.0, bottom: 5, left: 10, right: 1),
-                              child: ShaderMask(
-                                shaderCallback: (bounds) => LinearGradient(
-                                    colors: [
-                                      Colors.blue,
-                                      Colors.greenAccent
-                                    ]).createShader(bounds),
-                                child: Text(
-                                  'Daily Activity |',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, bottom: 5, left: 10, right: 1),
+                                  child: ShaderMask(
+                                    shaderCallback: (bounds) => LinearGradient(
+                                        colors: [
+                                          Colors.blue,
+                                          Colors.greenAccent
+                                        ]).createShader(bounds),
+                                    child: Text(
+                                      'Daily Activity |',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Text(
+                                  'Each Campus',
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
-                            Text(
-                              'Each Campus',
-                              style: TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold),
-                            ),
+                            IconButton(
+                                onPressed: _printDoc, icon: Icon(Icons.print))
                           ],
                         ),
                         Row(
@@ -3424,6 +3454,669 @@ class _DashboardState extends State<Dashboard> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5))),
       child: _dailyActivityTable(),
+    );
+  }
+
+  Future<void> _printDoc() async {
+    final doc = pw.Document();
+    doc.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.a4, // Set page format to A4
+        build: (pw.Context context) {
+          // Build printable content (e.g., text)
+          return pw.Center(
+            child: pw.Container(
+              decoration: pw.BoxDecoration(
+                  border: pw.Border(
+                      top: pw.BorderSide(color: PdfColors.blue, width: 2))),
+              child: pw.Column(
+                mainAxisAlignment: pw.MainAxisAlignment.start,
+                children: [
+                  pw.Row(
+                    children: [
+                      pw.Padding(
+                        padding: const pw.EdgeInsets.only(
+                            top: 5.0, bottom: 5, left: 10, right: 1),
+                        child: pw.Text(
+                          'Daily Activity |',
+                          style: pw.TextStyle(
+                              fontWeight: pw.FontWeight.bold,
+                              color: PdfColors.black),
+                        ),
+                      ),
+                      pw.Text(
+                        'Each Campus',
+                        style: pw.TextStyle(
+                            fontSize: 12, fontWeight: pw.FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Text('Campus Code',
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold,
+                                color: PdfColors.grey700)),
+                        pw.Text('Leads',
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold,
+                                color: PdfColors.grey700)),
+                        pw.Text('Admissions',
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold,
+                                color: PdfColors.grey700)),
+                        pw.Text('Collection',
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold,
+                                color: PdfColors.grey700)),
+                      ]),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CIFSD01',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CIFSD02',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CIFSD03',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CIFSD04',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CIFSD05',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CISWL01',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CIRYK01',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CISGD01',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CILHR01',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CILHE01',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Padding(
+                    padding: const pw.EdgeInsets.only(left: 12.0),
+                    child: pw.Row(
+                      mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                      children: [
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          decoration: pw.BoxDecoration(
+                              gradient: pw.LinearGradient(colors: [
+                                PdfColors.blue,
+                                PdfColors.greenAccent
+                              ]),
+                              borderRadius: pw.BorderRadius.circular(5)),
+                          child: pw.Center(
+                            child: pw.Text(
+                              'CIOKR01',
+                              style: pw.TextStyle(
+                                  color: PdfColors.white,
+                                  fontWeight: pw.FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                        pw.Container(
+                          height: 25,
+                          width: 80,
+                          child: pw.Center(
+                            child: pw.Text('0'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  pw.Divider(height: 5),
+                  pw.Container(
+                    padding: pw.EdgeInsets.symmetric(vertical: 10),
+                    decoration: pw.BoxDecoration(
+                        borderRadius: pw.BorderRadius.only(
+                            bottomLeft: pw.Radius.circular(5),
+                            bottomRight: pw.Radius.circular(5)),
+                        color: PdfColors.greenAccent100),
+                    child: pw.Padding(
+                      padding: const pw.EdgeInsets.only(left: 12.0),
+                      child: pw.Row(
+                        mainAxisAlignment: pw.MainAxisAlignment.spaceAround,
+                        children: [
+                          pw.Container(
+                            height: 25,
+                            width: 80,
+                            decoration: pw.BoxDecoration(
+                                gradient: pw.LinearGradient(colors: [
+                                  PdfColors.blue,
+                                  PdfColors.greenAccent
+                                ]),
+                                borderRadius: pw.BorderRadius.circular(5)),
+                            child: pw.Center(
+                              child: pw.Text(
+                                'TOTAL',
+                                style: pw.TextStyle(
+                                    color: PdfColors.white,
+                                    fontWeight: pw.FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          pw.Container(
+                            height: 25,
+                            width: 80,
+                            child: pw.Center(
+                              child: pw.Text(
+                                '0',
+                                style: pw.TextStyle(
+                                    fontWeight: pw.FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          pw.Container(
+                            height: 25,
+                            width: 80,
+                            child: pw.Center(
+                              child: pw.Text(
+                                '0',
+                                style: pw.TextStyle(
+                                    fontWeight: pw.FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          pw.Container(
+                            height: 25,
+                            width: 80,
+                            child: pw.Center(
+                              child: pw.Text(
+                                '0',
+                                style: pw.TextStyle(
+                                    fontWeight: pw.FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+    // Print the document
+    await Printing.layoutPdf(
+      onLayout: (PdfPageFormat format) async => doc.save(),
     );
   }
 }

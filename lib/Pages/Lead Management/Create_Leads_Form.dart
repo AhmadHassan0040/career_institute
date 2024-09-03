@@ -114,13 +114,7 @@ class _LeadFormState extends State<LeadForm> {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _city(),
-            SizedBox(
-              width: 10,
-            ),
-            _country()
-          ],
+          children: [_city(), _country()],
         ),
         SizedBox(
           height: 15,
@@ -146,7 +140,7 @@ class _LeadFormState extends State<LeadForm> {
           children: [
             _origin(),
             SizedBox(
-              width: 10,
+              width: 30,
             ),
             _preferredCampus(),
           ],
@@ -174,6 +168,282 @@ class _LeadFormState extends State<LeadForm> {
     );
   }
 
+  Widget _tabletForm() {
+    return ListView(
+      children: [
+        myAppBar(title: 'CREATE NEW LEAD', mode: viewMode!),
+        SizedBox(
+          height: 10,
+        ),
+        Center(
+          child: RichText(
+            text: TextSpan(children: [
+              TextSpan(
+                text: "(All Fields marked with ",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white),
+              ),
+              TextSpan(
+                text: '*',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.red),
+              ),
+              TextSpan(
+                text: ' are required)',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white),
+              ),
+            ]),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Divider(
+            color: Colors.grey.shade400,
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 300, child: _fullName()),
+            Container(width: 300, child: _email()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 300, child: _primaryContactNumber()),
+            Container(width: 300, child: _area()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+                width: 150,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 25.0, right: 12.5),
+                  child: _city(),
+                )),
+            Container(
+                width: 150,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12.5, right: 25),
+                  child: _country(),
+                )),
+            Container(width: 300, child: _gender()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 300, child: _teachingMethod()),
+            Container(width: 300, child: _coursesInterested()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 288, child: _marketingSource()),
+            Container(
+                width: 112,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 13.0, right: 1),
+                  child: _origin(),
+                )),
+            Container(
+                width: 200,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 1, right: 25),
+                  child: _preferredCampus(),
+                )),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 300, child: _nextFollowUp()),
+            Container(width: 300, child: _probability()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        _remarks(),
+        SizedBox(
+          height: 15,
+        ),
+        _submitBtns(),
+        SizedBox(
+          height: 350,
+        ),
+      ],
+    );
+  }
+
+  Widget _windowForm() {
+    return ListView(
+      children: [
+        myAppBar(title: 'CREATE NEW LEAD', mode: viewMode!),
+        SizedBox(
+          height: 10,
+        ),
+        Center(
+          child: RichText(
+            text: TextSpan(children: [
+              TextSpan(
+                text: "(All Fields marked with ",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white),
+              ),
+              TextSpan(
+                text: '*',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.red),
+              ),
+              TextSpan(
+                text: ' are required)',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white),
+              ),
+            ]),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Divider(
+            color: Colors.grey.shade400,
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 300, child: _fullName()),
+            Container(width: 300, child: _email()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 300, child: _primaryContactNumber()),
+            Container(width: 300, child: _area()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+                width: 150,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 25.0, right: 12.5),
+                  child: _city(),
+                )),
+            Container(
+                width: 150,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 12.5, right: 25),
+                  child: _country(),
+                )),
+            Container(width: 300, child: _gender()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 300, child: _teachingMethod()),
+            Container(width: 300, child: _coursesInterested()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 288, child: _marketingSource()),
+            Container(
+                width: 112,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 13.0, right: 1),
+                  child: _origin(),
+                )),
+            Container(
+                width: 200,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 1, right: 25),
+                  child: _preferredCampus(),
+                )),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 300, child: _nextFollowUp()),
+            Container(width: 300, child: _probability()),
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(width: 420, child: _remarks()),
+            Container(width: 300, child: _submitBtns()),
+          ],
+        ),
+        SizedBox(
+          height: 50,
+        ),
+      ],
+    );
+  }
+
   Widget _mobileView() {
     return Center(
       child: Container(
@@ -184,7 +454,7 @@ class _LeadFormState extends State<LeadForm> {
   }
 
   Widget _tabletView() {
-    return _Form();
+    return _tabletForm();
   }
 
   Widget _windowView() {
@@ -199,7 +469,7 @@ class _LeadFormState extends State<LeadForm> {
         Container(
           width: _screenWidth - 304,
           color: Colors.blueGrey.shade900,
-          child: _Form(),
+          child: _windowForm(),
         ),
       ],
     );
@@ -471,7 +741,7 @@ class _LeadFormState extends State<LeadForm> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Radio(
                   activeColor: Colors.white,
@@ -959,7 +1229,7 @@ class _LeadFormState extends State<LeadForm> {
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(8),
-              color: Colors.blueGrey.shade900,
+              color: Colors.grey.shade900,
             ),
             child: Center(
                 child: Text(
@@ -979,7 +1249,7 @@ class _LeadFormState extends State<LeadForm> {
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(8),
-              color: Colors.blueGrey.shade900,
+              color: Colors.grey.shade900,
             ),
             child: Center(
                 child: Text(
