@@ -37,6 +37,51 @@ class DashboardData extends GetxController {
   int oct = 210;
   int nov = 180;
   int dec = 240;
+
+  //All Capmus Table Data
+  int cifsd01Leads = 1;
+  int cifsd01Admissions = 2;
+  int cifsd01Collection = 3;
+
+  int cifsd02Leads = 4;
+  int cifsd02Admissions = 5;
+  int cifsd02Collection = 6;
+
+  int cifsd03Leads = 7;
+  int cifsd03Admissions = 8;
+  int cifsd03Collection = 9;
+
+  int cifsd04Leads = 10;
+  int cifsd04Admissions = 11;
+  int cifsd04Collection = 12;
+
+  int cifsd05Leads = 13;
+  int cifsd05Admissions = 14;
+  int cifsd05Collection = 15;
+
+  int ciswl01Leads = 16;
+  int ciswl01Admissions = 17;
+  int ciswl01Collection = 18;
+
+  int ciryk01Leads = 19;
+  int ciryk01Admissions = 20;
+  int ciryk01Collection = 21;
+
+  int cisgd01Leads = 22;
+  int cisgd01Admissions = 23;
+  int cisgd01Collection = 24;
+
+  int cilhr01Leads = 25;
+  int cilhr01Admissions = 26;
+  int cilhr01Collection = 27;
+
+  int cilhe01Leads = 28;
+  int cilhe01Admissions = 29;
+  int cilhe01Collection = 30;
+
+  int ciokr01Leads = 31;
+  int ciokr01Admissions = 32;
+  int ciokr01Collection = 33;
 }
 
 class LoginData extends GetxController {
