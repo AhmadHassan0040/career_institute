@@ -170,7 +170,7 @@ class drawerData extends StatelessWidget {
                       ),
                       ListTile(
                         onTap: () {
-                          Get.offAll(Todays_Lead(),
+                          Get.offAll(Todays_Leads(),
                               transition: Transition.rightToLeftWithFade);
                         },
                         leading: Icon(

@@ -255,3 +255,14 @@ class WEBSITELEADS extends GetxController {
   ].obs;
   RxList<Map<String, String>> WebsiteAdmissions = <Map<String, String>>[].obs;
 }
+
+class TODAYSLEADS extends GetxController {
+  RxList<Map<String, String>> TodaysLeads = <Map<String, String>>[
+    {
+      'Name': 'Ahmad',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+  ].obs;
+}

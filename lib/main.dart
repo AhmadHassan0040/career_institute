@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(fontFamily: 'Rajdhani'),
       debugShowCheckedModeBanner: false,
-      home: Lead_Follow_UP(),
+      home: SplashScreen(),
     );
   }
 }
