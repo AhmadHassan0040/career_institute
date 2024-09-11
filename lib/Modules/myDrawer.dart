@@ -10,6 +10,7 @@ import 'package:career_institute/Pages/Lead%20Management/Successfully_Enrolled.d
 import 'package:career_institute/Pages/Lead%20Management/Successfully_Registered.dart';
 import 'package:career_institute/Pages/Lead%20Management/Todays_Leads.dart';
 import 'package:career_institute/Pages/Lead%20Management/Transferred_Leads.dart';
+import 'package:career_institute/Pages/Lead%20Management/Website_Leads.dart';
 import 'package:career_institute/Startup_initial_Pages/loginPage.dart';
 
 import 'package:flutter/material.dart';
@@ -118,6 +119,36 @@ class drawerData extends StatelessWidget {
                           color: Colors.grey,
                         ),
                         title: Text('Lead\'s Follow-UP'),
+                        titleTextStyle: TextStyle(
+                            fontSize: 14,
+                            fontFamily: 'Rajdhani',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                        trailing: Container(
+                          width: 30,
+                          height: 20,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              gradient: LinearGradient(
+                                  colors: [Colors.red, Colors.red])),
+                          child: Center(
+                              child: Text(
+                            '99+',
+                            style: TextStyle(color: Colors.white),
+                          )),
+                        ),
+                      ),
+                      ListTile(
+                        onTap: () {
+                          Get.offAll(() => Website_Leads(),
+                              transition: Transition.rightToLeftWithFade);
+                        },
+                        leading: Icon(
+                          Icons.circle,
+                          size: 10,
+                          color: Colors.grey,
+                        ),
+                        title: Text('Website Leads'),
                         titleTextStyle: TextStyle(
                             fontSize: 14,
                             fontFamily: 'Rajdhani',

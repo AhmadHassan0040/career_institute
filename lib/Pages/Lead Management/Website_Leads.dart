@@ -4,6 +4,7 @@ import 'package:career_institute/DataHandling/Data.dart';
 import 'package:career_institute/Modules/myAppBar.dart';
 import 'package:career_institute/Modules/myDrawer.dart';
 import 'package:career_institute/Pages/Lead%20Management/Tables/Lead_Follow_UP_Table.dart';
+import 'package:career_institute/Pages/Lead%20Management/Tables/Website_Leads_Table.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -11,15 +12,15 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-class Lead_Follow_UP extends StatefulWidget {
-  Lead_Follow_UP({super.key});
+class Website_Leads extends StatefulWidget {
+  Website_Leads({super.key});
 
   @override
-  State<Lead_Follow_UP> createState() => _Lead_Follow_UPState();
+  State<Website_Leads> createState() => _Website_LeadsState();
 }
 
-class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
-  LeadFollowUPData leadFollowUPData = Get.put(LeadFollowUPData());
+class _Website_LeadsState extends State<Website_Leads> {
+  WEBSITELEADS websiteLeadsData = Get.put(WEBSITELEADS());
   String? viewMode;
 
   @override
@@ -45,11 +46,11 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
   }
 
   Widget _mobileView() {
-    return _leadFollowUP();
+    return _websiteLeads();
   }
 
   Widget _tabletView() {
-    return _leadFollowUP();
+    return _websiteLeads();
   }
 
   Widget _windowView() {
@@ -64,17 +65,17 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
         Container(
           width: _screenWidth - 304,
           color: Colors.blueGrey.shade900,
-          child: _leadFollowUP(),
+          child: _websiteLeads(),
         ),
       ],
     );
   }
 
-  Widget _leadFollowUP() {
+  Widget _websiteLeads() {
     return Center(
       child: ListView(
         children: [
-          myAppBar(title: 'LEAD\'S FOLLOW UP', mode: viewMode!),
+          myAppBar(title: 'WEBSITE LEAD\'S', mode: viewMode!),
           Stack(children: [
             Center(
               child: Container(
@@ -83,29 +84,29 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
                     thumbColor: Colors.white,
                     backgroundColor: Colors.grey.shade900,
                     children: {
-                      'todays': Text(
-                        'TODAY\'s LEADS',
+                      'leads': Text(
+                        'WEBSITE LEADS',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: leadFollowUPData.leads == 'todays'
+                          color: websiteLeadsData.leads == 'leads'
                               ? Colors.black
                               : Colors.white,
                         ),
                       ),
-                      'pending': Text(
-                        'PENDING LEADS',
+                      'admissions': Text(
+                        'WEBSITE ADMISSIONS',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: leadFollowUPData.leads == 'pending'
+                          color: websiteLeadsData.leads == 'admissions'
                               ? Colors.black
                               : Colors.white,
                         ),
                       ),
                     },
-                    groupValue: leadFollowUPData.leads,
+                    groupValue: websiteLeadsData.leads,
                     onValueChanged: (String? newValue) {
                       setState(() {
-                        leadFollowUPData.leads = newValue!;
+                        websiteLeadsData.leads = newValue!;
                       });
                     }),
               ),
@@ -227,18 +228,18 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
   }
 
   Widget _addLeadBtn() {
-    if (leadFollowUPData.leads == 'todays') {
-      return _addTodays();
+    if (websiteLeadsData.leads == 'leads') {
+      return _addLeads();
     } else {
-      return _addPending();
+      return _addAdmissions();
     }
   }
 
-  Widget _addTodays() {
+  Widget _addLeads() {
     return IconButton(
         onPressed: () {
-          leadFollowUPData.addTodaysLead({
-            'Name': 'Testing Todays',
+          websiteLeadsData.addWebsiteLeads({
+            'Name': 'Testing Leads',
             'Program': 'Web Applications Development',
             'Contact': '0000000000',
             'Campus': 'CIFSD05',
@@ -250,11 +251,11 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
         ));
   }
 
-  Widget _addPending() {
+  Widget _addAdmissions() {
     return IconButton(
         onPressed: () {
-          leadFollowUPData.addPendingLead({
-            'Name': 'Testing Pending',
+          websiteLeadsData.addWebsiteAdmissions({
+            'Name': 'Testing Admissions',
             'Program': 'Web Applications Development',
             'Contact': '0000000000',
             'Campus': 'CIFSD05',
@@ -267,14 +268,14 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
   }
 
   Widget _LeadsTable() {
-    if (leadFollowUPData.leads == 'todays') {
-      return _TodaysLeads();
+    if (websiteLeadsData.leads == 'leads') {
+      return _WebsiteLeads();
     } else {
-      return _PendingLeads();
+      return _WebsiteAdmissions();
     }
   }
 
-  Widget _TodaysLeads() {
+  Widget _WebsiteLeads() {
     double _screenHeight = MediaQuery.of(context).size.height;
     return Container(
       height: _screenHeight,
@@ -286,11 +287,11 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
       child: Center(
         child: Obx(
           () => ListView.builder(
-              itemCount: leadFollowUPData.TodaysLeads.length,
+              itemCount: websiteLeadsData.WebsiteLeads.length,
               itemBuilder: (context, index) {
                 final Map<String, String> lead =
-                    leadFollowUPData.TodaysLeads[index];
-                return FollowUPLeads(
+                    websiteLeadsData.WebsiteLeads[index];
+                return WebsiteLeadsTable(
                   Sr: index + 1,
                   Name: lead['Name'] ?? '',
                   Program: lead['Program'] ?? '',
@@ -303,7 +304,7 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
     );
   }
 
-  Widget _PendingLeads() {
+  Widget _WebsiteAdmissions() {
     double _screenHeight = MediaQuery.of(context).size.height;
     return Container(
       height: _screenHeight,
@@ -315,11 +316,11 @@ class _Lead_Follow_UPState extends State<Lead_Follow_UP> {
       child: Center(
         child: Obx(
           () => ListView.builder(
-              itemCount: leadFollowUPData.PendingLeads.length,
+              itemCount: websiteLeadsData.WebsiteAdmissions.length,
               itemBuilder: (context, index) {
                 final Map<String, String> lead =
-                    leadFollowUPData.PendingLeads[index];
-                return FollowUPLeads(
+                    websiteLeadsData.WebsiteAdmissions[index];
+                return WebsiteLeadsTable(
                   Sr: index + 1,
                   Name: lead['Name'] ?? '',
                   Program: lead['Program'] ?? '',

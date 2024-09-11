@@ -209,9 +209,7 @@ class _DashboardState extends State<Dashboard> {
                   _greenChart(),
                 ],
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -524,7 +522,7 @@ class _DashboardState extends State<Dashboard> {
                                 colors: [Colors.blue, Colors.greenAccent])
                             .createShader(bounds),
                         child: Text(
-                          'This Month\'s Lead',
+                          'Current Month\'s Lead',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.white),
                         ),
@@ -545,7 +543,7 @@ class _DashboardState extends State<Dashboard> {
                                 colors: [Colors.greenAccent, Colors.blue])
                             .createShader(bounds),
                         child: Text(
-                          'This Month\'s Admission',
+                          'Current Month\'s Admission',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, color: Colors.white),
                         ),
@@ -874,7 +872,7 @@ class _DashboardState extends State<Dashboard> {
                                     colors: [Colors.blue, Colors.greenAccent])
                                 .createShader(bounds),
                             child: Text(
-                              'This Month\'s Lead',
+                              'Current Month\'s Lead',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
@@ -896,7 +894,7 @@ class _DashboardState extends State<Dashboard> {
                                     colors: [Colors.greenAccent, Colors.blue])
                                 .createShader(bounds),
                             child: Text(
-                              'This Month\'s Admission',
+                              'Current Month\'s Admission',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),

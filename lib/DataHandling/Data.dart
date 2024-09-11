@@ -159,3 +159,99 @@ class LeadData extends GetxController {
 
   double sliderValue = 0;
 }
+
+class LeadFollowUPData extends GetxController {
+  String leads = 'todays';
+
+  void addTodaysLead(Map<String, String> lead) {
+    TodaysLeads.add(lead);
+    update();
+  }
+
+  void addPendingLead(Map<String, String> lead) {
+    PendingLeads.add(lead);
+    update();
+  }
+
+  RxList<Map<String, String>> TodaysLeads = <Map<String, String>>[
+    {
+      'Name': 'Ahmad',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+    {
+      'Name': 'Hassan',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+    {
+      'Name': 'Ahmad Nasir',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+    {
+      'Name': 'Muhammad Hamza',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+    {
+      'Name': 'Ahmad Hassan',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+  ].obs;
+  RxList<Map<String, String>> PendingLeads = <Map<String, String>>[].obs;
+}
+
+class WEBSITELEADS extends GetxController {
+  String leads = 'leads';
+
+  void addWebsiteLeads(Map<String, String> lead) {
+    WebsiteLeads.add(lead);
+    update();
+  }
+
+  void addWebsiteAdmissions(Map<String, String> lead) {
+    WebsiteAdmissions.add(lead);
+    update();
+  }
+
+  RxList<Map<String, String>> WebsiteLeads = <Map<String, String>>[
+    {
+      'Name': 'Ahmad',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+    {
+      'Name': 'Hassan',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+    {
+      'Name': 'Ahmad Nasir',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+    {
+      'Name': 'Muhammad Hamza',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+    {
+      'Name': 'Ahmad Hassan',
+      'Program': 'Flutter',
+      'Contact': '03143902809',
+      'Campus': 'CIFSD01',
+    },
+  ].obs;
+  RxList<Map<String, String>> WebsiteAdmissions = <Map<String, String>>[].obs;
+}

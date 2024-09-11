@@ -3,6 +3,7 @@
 import 'package:career_institute/Modules/splashScreen.dart';
 import 'package:career_institute/Pages/Dashboard.dart';
 import 'package:career_institute/Pages/Lead%20Management/Create_Leads_Form.dart';
+import 'package:career_institute/Pages/Lead%20Management/Lead_Follow_UP.dart';
 
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(fontFamily: 'Rajdhani'),
       debugShowCheckedModeBanner: false,
-      home: Dashboard(),
+      home: Lead_Follow_UP(),
     );
   }
 }
