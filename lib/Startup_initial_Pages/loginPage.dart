@@ -218,6 +218,8 @@ class _LoginState extends State<Login> {
                         keyboardType: TextInputType.emailAddress,
                         style: TextStyle(fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
+                            prefixIcon:
+                                Icon(Icons.email_outlined, color: Colors.black),
                             hintText: 'Enter your email address',
                             hintStyle: TextStyle(color: Colors.black)),
                         validator: (Value) {
@@ -253,6 +255,7 @@ class _LoginState extends State<Login> {
                                   });
                                 },
                                 child: _visibility),
+                            prefixIcon: Icon(Icons.key, color: Colors.black),
                             hintText: 'Enter your password',
                             hintStyle: TextStyle(color: Colors.black)),
                         validator: (Value) {
