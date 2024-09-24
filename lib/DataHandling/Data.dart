@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+//All data of the app will be handelled here.
+//I used GetX statemanagement method
+
 class DashboardData extends GetxController {
   String selectedPeriod = 'WEEKLY GRAPH';
   String selectedGraph = 'ADMISSIONS';

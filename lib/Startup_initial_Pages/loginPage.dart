@@ -10,6 +10,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// i used email: test@gmail.com and password: 11111111
+// for navigational testing
+
 final _formKey = GlobalKey<FormState>();
 
 class Login extends StatefulWidget {
@@ -49,7 +52,7 @@ class _LoginState extends State<Login> {
         setState(() {
           _btnPressed = !_btnPressed;
           if (_formKey.currentState!.validate()) {
-            if (formData.emailController.text == 'hasan.hasanf80@gmail.com' &&
+            if (formData.emailController.text == 'test@gmail.com' &&
                 formData.passController.text == '11111111') {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   backgroundColor: Colors.white,

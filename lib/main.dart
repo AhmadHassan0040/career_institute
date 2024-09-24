@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() async {
+
+  //App Starts from here
   runApp(const MyApp());
 }
 
